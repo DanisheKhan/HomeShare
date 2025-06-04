@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">Explore</a>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex" action="/listings" method="GET">
+          <input class="form-control searchbar me-2" type="search" placeholder="Search Destinations" name="search">
+          <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/new">Airbnb Your Home</a>
+        <% if (typeof currUser === 'undefined' || currUser === null) { %>
+          <a class="nav-link" href="/signup"><b>Signup</b></a>
+          <a class="nav-link" href="/login"><b>LogIn</b></a>
+        <% } %>
+    </div>
+  </div>
+  
+</nav>
+
+<style>
+  .btn-search {
+    background-color: #f7575c;
+    color: white;
+    border-radius: 5rem;
+  }
+  .btn-search:hover {
+    background-color: #f7575c;
+    color: white;
+  }
+  .searchbar {
+    border-radius: 5rem;
+    width: 20rem;
+  }
+  .blur-background {
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('#navbarNavAltMarkup');
+
+    navbarToggler.addEventListener('click', function () {
+      if (navbarCollapse.classList.contains('show')) {
+        navbarCollapse.classList.remove('blur-background');
+      } else {
+        navbarCollapse.classList.add('blur-background');
+      }
+    });
+
+    navbarCollapse.addEventListener('hidden.bs.collapse', function () {
+      navbarCollapse.classList.remove('blur-background');
+    });
+
+    navbarCollapse.addEventListener('shown.bs.collapse', function () {
+      navbarCollapse.classList.add('blur-background');
+    });
+  });
+</script>
