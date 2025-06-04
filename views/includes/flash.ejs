@@ -1,13 +1,255 @@
-<% if(locals.success && locals.success.length){ %>
-  <div class="alert alert-success alert-dismissible fade show col-6 offset-3 mt-3" role="alert">
-    <%= success %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="flash-container">
+  <% if(locals.success && locals.success.length){ %>
+  <div
+    class="custom-alert success-alert alert-dismissible fade show animate__animated animate__fadeInDown"
+    role="alert"
+  >
+    <div class="alert-content">
+      <div class="alert-icon-wrapper">
+        <i class="fas fa-check-circle alert-icon"></i>
+      </div>
+      <div class="alert-message"><%= success %></div>
+    </div>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
   </div>
-<% } %>
+  <% } %> <% if(locals.error && locals.error.length){ %>
+  <div
+    class="custom-alert error-alert alert-dismissible fade show animate__animated animate__fadeInDown"
+    role="alert"
+  >
+    <div class="alert-content">
+      <div class="alert-icon-wrapper">
+        <i class="fas fa-exclamation-circle alert-icon"></i>
+      </div>
+      <div class="alert-message"><%= error %></div>
+    </div>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  <% } %>
+</div>
 
-<% if(locals.error && locals.error.length){ %>
-  <div class="alert alert-danger alert-dismissible fade show col-6 offset-3 mt-3" role="alert">
-    <%= error %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-<% } %>
+<style>
+  .flash-container {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050;
+    min-width: 300px;
+    max-width: 500px;
+    width: 90%;
+    pointer-events: none;
+  }
+
+  .custom-alert {
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    pointer-events: auto;
+    opacity: 0.98;
+  }
+
+  .alert-content {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    flex: 1;
+  }
+
+  .alert-icon-wrapper {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .alert-icon {
+    font-size: 1.25rem;
+  }
+
+  .alert-message {
+    padding: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .success-alert {
+    background-color: rgba(237, 247, 237, 0.95);
+    color: #2e7d32;
+  }
+
+  .success-alert .alert-icon-wrapper {
+    background-color: #4caf50;
+    color: white;
+  }
+
+  .error-alert {
+    background-color: rgba(253, 237, 237, 0.95);
+    color: #d32f2f;
+  }
+
+  .error-alert .alert-icon-wrapper {
+    background-color: #f44336;
+    color: white;
+  }
+
+  .btn-close {
+    background: transparent;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    margin: 0 0.75rem;
+    padding: 0.75rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-close:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  /* Animations */
+  @keyframes slideInDown {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOutUp {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+  }
+
+  .alert-show {
+    animation: slideInDown 0.4s ease-out forwards;
+  }
+
+  .alert-hide {
+    animation: slideOutUp 0.3s ease-in forwards;
+  }
+
+  /* Toast animations */
+  .toast-enter {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  .toast-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .toast-exit {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .toast-exit-active {
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .flash-container {
+      width: 92%;
+      max-width: 450px;
+      top: 70px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .flash-container {
+      width: 95%;
+      max-width: none;
+      top: 65px;
+    }
+
+    .custom-alert {
+      margin-bottom: 0.75rem;
+    }
+
+    .alert-icon-wrapper {
+      padding: 0.75rem;
+    }
+
+    .alert-message {
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .btn-close {
+      padding: 0.5rem;
+      margin: 0 0.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Enhanced flash message handling
+  document.addEventListener("DOMContentLoaded", function () {
+    const alerts = document.querySelectorAll(".custom-alert");
+
+    // Initialize alerts with animation
+    alerts.forEach((alert) => {
+      // Auto-dismiss alerts after 5 seconds
+      setTimeout(() => {
+        // Add exit animation class
+        alert.classList.add("alert-hide");
+
+        // Actually close the alert after animation completes
+        setTimeout(() => {
+          const bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
+          bsAlert.close();
+        }, 300);
+      }, 5000);
+
+      // Stop auto-dismiss on hover
+      alert.addEventListener("mouseenter", function () {
+        this.classList.remove("alert-hide");
+      });
+
+      // Resume auto-dismiss on mouse leave
+      alert.addEventListener("mouseleave", function () {
+        setTimeout(() => {
+          this.classList.add("alert-hide");
+          setTimeout(() => {
+            const bsAlert = bootstrap.Alert.getOrCreateInstance(this);
+            bsAlert.close();
+          }, 300);
+        }, 2000);
+      });
+    });
+  });
+</script>
