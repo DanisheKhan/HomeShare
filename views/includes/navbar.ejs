@@ -1,117 +1,82 @@
-<nav
-  class="sticky top-0 bg-white shadow-navbar transition-all duration-300 py-2.5 px-4"
->
-  <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between">
-    <!-- Logo -->
-    <a href="/listings" class="flex items-center space-x-2 group">
-      <i
-        class="fa-regular fa-compass text-2xl text-primary transition-transform duration-300 group-hover:rotate-12"
-      ></i>
-      <span
-        class="font-bold text-xl text-primary group-hover:text-primaryDark transition-colors duration-300"
-        >HomeShare</span
-      >
+<nav class="navbar navbar-expand-md bg-body-light sticky-top shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="/listings">
+      <i class="fa-regular fa-compass me-2 brand-icon"></i>
+      <span class="brand-text">HomeShare</span>
     </a>
-
-    <!-- Mobile menu button -->
     <button
-      id="navbar-toggle"
-      class="md:hidden p-2 rounded-md focus:outline-none"
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <i class="fa-solid fa-bars text-gray-600"></i>
+      <span class="navbar-toggler-icon"></span>
     </button>
-
-    <!-- Navigation container -->
-    <div
-      id="navbar-content"
-      class="hidden w-full md:flex md:w-auto md:items-center md:justify-between md:flex-1"
-    >
-      <!-- Left Links -->
-      <div class="md:flex md:items-center">
-        <a
-          href="/listings"
-          class="block py-2 px-3 md:mr-4 text-gray-700 hover:text-primary relative group after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 group-hover:after:w-full"
-        >
-          <i class="fa-solid fa-globe mr-1"></i> Explore
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link hover-effect" href="/listings">
+          <i class="fa-solid fa-globe me-1"></i> Explore
         </a>
       </div>
-
-      <!-- Search -->
-      <div class="w-full md:w-auto md:max-w-md md:mx-4 my-3 md:my-0">
-        <form action="/listings" method="GET">
-          <div class="relative flex items-center">
+      <div class="navbar-nav mx-auto search-container">
+        <form class="d-flex" action="/listings" method="GET">
+          <div class="input-group">
             <input
+              class="form-control search-input"
               type="search"
-              name="search"
               placeholder="Search Destinations"
+              name="search"
               aria-label="Search"
-              class="w-full pl-4 pr-10 py-2 rounded-l-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
             />
-            <button
-              type="submit"
-              class="absolute right-0 top-0 bottom-0 px-4 bg-primary text-white rounded-r-full hover:bg-primaryDark transition-all duration-300"
-            >
+            <button class="btn btn-search" type="submit">
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
         </form>
       </div>
-
-      <!-- Right Links -->
-      <div
-        class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-3"
-      >
-        <a
-          href="/listings/new"
-          class="block py-2 px-3 text-gray-700 hover:text-primary font-semibold transition-colors duration-300"
-        >
-          <i class="fa-solid fa-house-user mr-1"></i> Host Your Home
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link host-link" href="/listings/new">
+          <i class="fa-solid fa-house-user me-1"></i> Host Your Home
         </a>
-
         <% if (typeof currUser === 'undefined' || currUser === null) { %>
-        <a
-          href="/signup"
-          class="block py-2 px-3 text-primary font-semibold hover:text-primaryDark transition-colors duration-300"
-        >
-          <i class="fa-solid fa-user-plus mr-1"></i> Signup
+        <a class="nav-link signup-btn" href="/signup">
+          <i class="fa-solid fa-user-plus me-1"></i> Signup
         </a>
-        <a
-          href="/login"
-          class="block py-1.5 px-4 bg-primary text-white rounded-full font-semibold hover:bg-primaryDark transition-colors duration-300"
-        >
-          <i class="fa-solid fa-right-to-bracket mr-1"></i> Login
+        <a class="nav-link login-btn btn btn-sm btn-primary" href="/login">
+          <i class="fa-solid fa-right-to-bracket me-1"></i> Login
         </a>
         <% } else { %>
-        <div class="relative" id="user-dropdown">
-          <button
-            class="flex items-center space-x-1 bg-gray-100 py-2 px-4 rounded-full border border-gray-200 hover:bg-gray-200 transition-all duration-300"
-            id="user-menu-button"
+        <div class="dropdown">
+          <a
+            class="nav-link dropdown-toggle user-menu"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <i class="fa-regular fa-user"></i>
-            <span class="ml-1">Account</span>
-            <i class="fa-solid fa-chevron-down text-xs ml-1"></i>
-          </button>
-
-          <div
-            id="dropdown-menu"
-            class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 animate-fade-in-down"
-          >
-            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-              <i class="fa-regular fa-id-card mr-2"></i>My Profile
-            </a>
-            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-              <i class="fa-solid fa-list mr-2"></i>My Listings
-            </a>
-            <div class="border-t border-gray-100 my-1"></div>
-            <a
-              href="/logout"
-              class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-            >
-              <i class="fa-solid fa-sign-out-alt mr-2"></i>Logout
-            </a>
-          </div>
+            <i class="fa-regular fa-user me-1"></i> Account
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end animate slideIn">
+            <li>
+              <a class="dropdown-item" href="#"
+                ><i class="fa-regular fa-id-card me-2"></i>My Profile</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"
+                ><i class="fa-solid fa-list me-2"></i>My Listings</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" href="/logout"
+                ><i class="fa-solid fa-sign-out-alt me-2"></i>Logout</a
+              >
+            </li>
+          </ul>
         </div>
         <% } %>
       </div>
@@ -120,82 +85,254 @@
 </nav>
 
 <style>
-  @keyframes fadeInDown {
-    from {
+  .navbar {
+    transition: all 0.3s ease;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  .navbar.scrolled {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .brand-icon {
+    font-size: 1.6rem;
+    color: #f7575c;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-brand:hover .brand-icon {
+    transform: rotate(15deg);
+  }
+
+  .brand-text {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #f7575c;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-brand:hover .brand-text {
+    text-shadow: 0 0 10px rgba(247, 87, 92, 0.3);
+  }
+
+  .btn-search {
+    background-color: #f7575c;
+    color: white;
+    border-radius: 0 2rem 2rem 0;
+    transition: all 0.2s ease;
+    border: none;
+    padding: 0.5rem 1.25rem;
+  }
+
+  .btn-search:hover {
+    background-color: #e04449;
+    color: white;
+    transform: translateX(3px);
+    box-shadow: 0 4px 8px rgba(224, 68, 73, 0.3);
+  }
+
+  .search-input {
+    border-radius: 2rem 0 0 2rem;
+    min-width: 18rem;
+    border-right: none;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .search-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(247, 87, 92, 0.15);
+    border-color: rgba(247, 87, 92, 0.5);
+  }
+
+  .search-container {
+    flex-grow: 0.5;
+  }
+
+  /* Navbar Links Animation */
+  .hover-effect {
+    position: relative;
+  }
+
+  .hover-effect::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #f7575c;
+    transition: all 0.3s ease;
+  }
+
+  .hover-effect:hover::after {
+    width: 80%;
+    left: 10%;
+  }
+
+  /* User Dropdown Animation */
+  .animate {
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+  }
+
+  @keyframes slideIn {
+    0% {
+      transform: translateY(1rem);
       opacity: 0;
-      transform: translateY(-10px);
     }
-    to {
+    100% {
+      transform: translateY(0rem);
       opacity: 1;
-      transform: translateY(0);
     }
   }
 
-  .animate-fade-in-down {
-    animation: fadeInDown 0.3s ease-out;
+  .slideIn {
+    animation-name: slideIn;
+  }
+
+  /* Login/Signup Buttons */
+  .login-btn {
+    margin-left: 0.5rem;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+  }
+
+  .signup-btn {
+    color: #f7575c !important;
+    font-weight: 600;
+  }
+
+  .host-link {
+    position: relative;
+    font-weight: 600;
+    color: #333 !important;
+    transition: all 0.3s ease;
+  }
+
+  .host-link:hover {
+    color: #f7575c !important;
   }
 
   @media (max-width: 768px) {
-    #navbar-content.show {
-      display: flex;
-      flex-direction: column;
-      padding: 1rem 0;
+    .search-container {
+      margin: 0.8rem 0;
+      width: 100%;
     }
+
+    .search-input {
+      width: 100%;
+      min-width: auto;
+    }
+
+    .login-btn,
+    .signup-btn {
+      margin: 0.2rem 0;
+      display: block;
+      text-align: center;
+    }
+
+    .login-btn {
+      margin-left: 0;
+    }
+  }
+  .nav-link {
+    position: relative;
+    margin: 0 0.3rem;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .nav-link:hover {
+    color: #f7575c !important;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f7575c;
+    transition: width 0.3s;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .host-link {
+    font-weight: 600;
+  }
+
+  .login-btn,
+  .signup-btn {
+    font-weight: 600;
+  }
+
+  .user-menu {
+    background-color: #f8f9fa;
+    border-radius: 1.5rem;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    border: 1px solid #dee2e6;
+  }
+
+  .user-menu:hover {
+    background-color: #f1f3f5;
+  }
+
+  .blur-background {
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
   }
 </style>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Mobile menu toggle
-    const navbarToggle = document.getElementById("navbar-toggle");
-    const navbarContent = document.getElementById("navbar-content");
+    const navbarToggler = document.querySelector(".navbar-toggler");
+    const navbarCollapse = document.querySelector("#navbarNavAltMarkup");
 
-    navbarToggle.addEventListener("click", function () {
-      if (navbarContent.classList.contains("hidden")) {
-        navbarContent.classList.remove("hidden");
-        navbarContent.classList.add("show", "flex", "flex-col");
-      } else {
-        navbarContent.classList.add("hidden");
-        navbarContent.classList.remove("show", "flex", "flex-col");
-      }
-    });
-
-    // User dropdown toggle
-    const userDropdownButton = document.getElementById("user-menu-button");
-    const dropdownMenu = document.getElementById("dropdown-menu");
-
-    if (userDropdownButton && dropdownMenu) {
-      userDropdownButton.addEventListener("click", function () {
-        dropdownMenu.classList.toggle("hidden");
-
-        // Update aria-expanded
-        const expanded =
-          userDropdownButton.getAttribute("aria-expanded") === "true";
-        userDropdownButton.setAttribute("aria-expanded", !expanded);
-      });
-
-      // Close dropdown when clicking outside
-      document.addEventListener("click", function (event) {
-        if (
-          !userDropdownButton.contains(event.target) &&
-          !dropdownMenu.contains(event.target)
-        ) {
-          dropdownMenu.classList.add("hidden");
-          userDropdownButton.setAttribute("aria-expanded", "false");
-        }
-      });
-    }
-
-    // Scroll effect
+    // Add scroll effect to navbar
     window.addEventListener("scroll", function () {
-      const navbar = document.querySelector("nav");
+      const navbar = document.querySelector(".navbar");
       if (window.scrollY > 50) {
-        navbar.classList.add("py-2", "shadow-lg");
-        navbar.classList.remove("py-2.5", "shadow-navbar");
+        navbar.classList.add("shadow");
       } else {
-        navbar.classList.remove("py-2", "shadow-lg");
-        navbar.classList.add("py-2.5", "shadow-navbar");
+        navbar.classList.remove("shadow");
       }
     });
+
+    navbarToggler.addEventListener("click", function () {
+      if (navbarCollapse.classList.contains("show")) {
+        navbarCollapse.classList.remove("blur-background");
+      } else {
+        navbarCollapse.classList.add("blur-background");
+      }
+    });
+
+    navbarCollapse.addEventListener("hidden.bs.collapse", function () {
+      navbarCollapse.classList.remove("blur-background");
+    });
+
+    navbarCollapse.addEventListener("shown.bs.collapse", function () {
+      navbarCollapse.classList.add("blur-background");
+    });
+  });
+</script>
+<script>
+  // Navbar scroll effect
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
   });
 </script>
