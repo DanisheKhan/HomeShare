@@ -1,49 +1,391 @@
 <% layout("layouts/boilerplate.ejs") %>
-  <div class="row">
-    <div class="col-8 offset-2">
-      <h3 class="mt-3">Edit your listing</h3>
-      <form method="post" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation"
-        enctype="multipart/form-data">
-        <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
-          <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required>
-          <div class="valid-feedback">Title Looks Good!</div>
-        </div>
-        <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <textarea name="listing[description]" class="form-control" required><%= listing.description %> </textarea>
-          <div class="invalid-feedback">Plz Enter a Description!</div>
-        </div>
 
-        <div class="mb-3">
-          Original Listing Image <br>
-          <img src="<%= originalImageUrl %>" alt="">
-
-        </div>
-
-        <div class="mb-3">
-          <label for="image" class="form-label">Upload New Image</label>
-          <input name="listing[image]" type="file" class="form-control">
-
-        </div>
-
-        <div class="row">
-          <div class="mb-3 col-md-4">
-            <label for="price" class="form-label">Price</label>
-            <input name="listing[price]" value="<%= listing.price %>" type="number" class="form-control" required>
-            <div class="invalid-feedback">Price Should be Valid</div>
+<div class="edit-listing-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+        <div class="form-container animate__animated animate__fadeIn">
+          <div class="form-header text-center mb-4">
+            <h2 class="form-title">Edit Your Listing</h2>
+            <p class="form-subtitle">Update your property's information</p>
           </div>
-          <div class="mb-3 col-md-8">
-            <label for="country" class="form-label">Country</label>
-            <input name="listing[country]" value="<%= listing.country %>" type="text" class="form-control" required>
-            <div class="invalid-feedback">Country Should be Valid</div>
-          </div>
+
+          <form
+            method="post"
+            action="/listings/<%= listing._id %>?_method=PUT"
+            novalidate
+            class="listing-form needs-validation"
+            enctype="multipart/form-data"
+          >
+            <div class="form-section">
+              <h3 class="section-title">Basic Information</h3>
+
+              <div class="mb-4">
+                <label for="title" class="form-label">
+                  <i class="fa-solid fa-heading me-2"></i>Title
+                </label>
+                <input
+                  name="listing[title]"
+                  value="<%= listing.title %>"
+                  type="text"
+                  class="form-control"
+                  required
+                />
+                <div class="valid-feedback">
+                  <i class="fa-solid fa-check me-1"></i>Perfect!
+                </div>
+                <div class="invalid-feedback">
+                  <i class="fa-solid fa-circle-exclamation me-1"></i>Please
+                  provide a title
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label for="description" class="form-label">
+                  <i class="fa-solid fa-align-left me-2"></i>Description
+                </label>
+                <textarea
+                  name="listing[description]"
+                  class="form-control"
+                  rows="5"
+                  required
+                >
+<%= listing.description.trim() %></textarea
+                >
+                <div class="valid-feedback">
+                  <i class="fa-solid fa-check me-1"></i>Great description!
+                </div>
+                <div class="invalid-feedback">
+                  <i class="fa-solid fa-circle-exclamation me-1"></i>Please
+                  provide a description
+                </div>
+                <div class="form-text">
+                  Include details about the space, amenities, and the
+                  surrounding area
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="section-title">Location</h3>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label for="country" class="form-label">
+                    <i class="fa-solid fa-globe me-2"></i>Country
+                  </label>
+                  <input
+                    name="listing[country]"
+                    value="<%= listing.country %>"
+                    type="text"
+                    class="form-control"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    <i class="fa-solid fa-circle-exclamation me-1"></i>Please
+                    specify the country
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="location" class="form-label">
+                    <i class="fa-solid fa-location-dot me-2"></i>City/Town
+                  </label>
+                  <input
+                    name="listing[location]"
+                    value="<%= listing.location %>"
+                    type="text"
+                    class="form-control"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    <i class="fa-solid fa-circle-exclamation me-1"></i>Please
+                    specify the location
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="section-title">Pricing</h3>
+
+              <div class="mb-4">
+                <label for="price" class="form-label">
+                  <i class="fa-solid fa-indian-rupee-sign me-2"></i>Price per
+                  night
+                </label>
+                <div class="input-group">
+                  <span class="input-group-text">₹</span>
+                  <input
+                    name="listing[price]"
+                    value="<%= listing.price %>"
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="invalid-feedback">
+                  <i class="fa-solid fa-circle-exclamation me-1"></i>Please
+                  specify a valid price
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3 class="section-title">Photos</h3>
+
+              <div class="mb-4">
+                <label class="form-label">
+                  <i class="fa-solid fa-photo-film me-2"></i>Current Image
+                </label>
+                <div class="current-image-container">
+                  <img
+                    src="<%= originalImageUrl %>"
+                    alt="Current listing image"
+                    class="current-image"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label for="image" class="form-label">
+                  <i class="fa-solid fa-image me-2"></i>Upload New Image
+                </label>
+                <div class="image-upload-container">
+                  <input
+                    name="listing[image]"
+                    type="file"
+                    class="form-control"
+                    id="imageInput"
+                    accept="image/*"
+                  />
+                  <div
+                    class="image-preview-container"
+                    id="imagePreviewContainer"
+                  >
+                    <div class="image-preview-placeholder">
+                      <i class="fa-solid fa-cloud-arrow-up"></i>
+                      <p>Choose a new image or drag it here</p>
+                    </div>
+                    <img
+                      id="imagePreview"
+                      src="#"
+                      alt="New Image Preview"
+                      class="d-none"
+                    />
+                  </div>
+                </div>
+                <div class="form-text">
+                  Leave empty to keep the current image
+                </div>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button class="btn btn-primary submit-btn" type="submit">
+                <i class="fa-solid fa-floppy-disk me-2"></i>Save Changes
+              </button>
+              <a
+                href="/listings/<%= listing._id %>"
+                class="btn btn-outline-secondary cancel-btn"
+              >
+                <i class="fa-solid fa-arrow-left me-2"></i>Back to Listing
+              </a>
+            </div>
+          </form>
         </div>
-        <div class="mb-3">
-          <label for="location" class="form-label">Location</label>
-          <input name="listing[location]" value="<%= listing.location %>" type="text" class="form-control" required>
-          <div class="invalid-feedback">Location Should be Valid</div>
-        </div>
-        <button class="btn btn-dark edit-btn mt-3">Edit</button>
+      </div>
     </div>
   </div>
+</div>
+
+<style>
+  .edit-listing-section {
+    padding: 2rem 0 4rem;
+  }
+
+  .form-container {
+    background-color: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .form-title {
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+
+  .form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .form-section:last-child {
+    border-bottom: none;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--secondary-color);
+  }
+
+  .form-label {
+    color: var(--secondary-color);
+    font-weight: 500;
+  }
+
+  .form-control {
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+  }
+
+  .form-control:focus {
+    box-shadow: 0 0 0 4px rgba(247, 87, 92, 0.1);
+    border-color: var(--primary-color);
+  }
+
+  .input-group-text {
+    background-color: #f8f9fa;
+    border-color: var(--border-color);
+    color: var(--text-muted);
+  }
+
+  .form-text {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  .current-image-container {
+    margin-bottom: 1.5rem;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+
+  .current-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  .image-upload-container {
+    position: relative;
+  }
+
+  .image-preview-container {
+    margin-top: 1rem;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .image-preview-container:hover {
+    border-color: var(--primary-color);
+  }
+
+  .image-preview-placeholder {
+    text-align: center;
+    color: var(--text-muted);
+  }
+
+  .image-preview-placeholder i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .image-preview-placeholder p {
+    margin: 0;
+  }
+
+  #imagePreview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .submit-btn {
+    padding: 0.75rem;
+    font-weight: 600;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  .submit-btn:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    transform: translateY(-2px);
+  }
+
+  .cancel-btn {
+    padding: 0.75rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .form-container {
+      padding: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Image preview functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    const imageInput = document.getElementById("imageInput");
+    const imagePreview = document.getElementById("imagePreview");
+    const imagePreviewContainer = document.getElementById(
+      "imagePreviewContainer"
+    );
+    const imagePreviewPlaceholder = document.querySelector(
+      ".image-preview-placeholder"
+    );
+
+    if (imageInput && imagePreview) {
+      imageInput.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            imagePreview.setAttribute("src", e.target.result);
+            imagePreview.classList.remove("d-none");
+            imagePreviewPlaceholder.classList.add("d-none");
+          };
+
+          reader.readAsDataURL(file);
+        } else {
+          imagePreview.classList.add("d-none");
+          imagePreviewPlaceholder.classList.remove("d-none");
+        }
+      });
+
+      // Click on preview to trigger file input
+      imagePreviewContainer.addEventListener("click", function () {
+        imageInput.click();
+      });
+    }
+  });
+</script>

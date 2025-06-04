@@ -1,44 +1,292 @@
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+<nav class="navbar navbar-expand-md bg-body-light sticky-top shadow-sm">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand d-flex align-items-center" href="/listings">
+      <i class="fa-regular fa-compass me-2 brand-icon"></i>
+      <span class="brand-text">HomeShare</span>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore</a>
+        <a class="nav-link hover-effect" href="/listings">
+          <i class="fa-solid fa-globe me-1"></i> Explore
+        </a>
       </div>
-      <div class="navbar-nav ms-auto">
+      <div class="navbar-nav mx-auto search-container">
         <form class="d-flex" action="/listings" method="GET">
-          <input class="form-control searchbar me-2" type="search" placeholder="Search Destinations" name="search">
-          <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <div class="input-group">
+            <input
+              class="form-control search-input"
+              type="search"
+              placeholder="Search Destinations"
+              name="search"
+              aria-label="Search"
+            />
+            <button class="btn btn-search" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
         </form>
       </div>
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">Airbnb Your Home</a>
+        <a class="nav-link host-link" href="/listings/new">
+          <i class="fa-solid fa-house-user me-1"></i> Host Your Home
+        </a>
         <% if (typeof currUser === 'undefined' || currUser === null) { %>
-          <a class="nav-link" href="/signup"><b>Signup</b></a>
-          <a class="nav-link" href="/login"><b>LogIn</b></a>
+        <a class="nav-link signup-btn" href="/signup">
+          <i class="fa-solid fa-user-plus me-1"></i> Signup
+        </a>
+        <a class="nav-link login-btn btn btn-sm btn-primary" href="/login">
+          <i class="fa-solid fa-right-to-bracket me-1"></i> Login
+        </a>
+        <% } else { %>
+        <div class="dropdown">
+          <a
+            class="nav-link dropdown-toggle user-menu"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fa-regular fa-user me-1"></i> Account
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end animate slideIn">
+            <li>
+              <a class="dropdown-item" href="#"
+                ><i class="fa-regular fa-id-card me-2"></i>My Profile</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"
+                ><i class="fa-solid fa-list me-2"></i>My Listings</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" href="/logout"
+                ><i class="fa-solid fa-sign-out-alt me-2"></i>Logout</a
+              >
+            </li>
+          </ul>
+        </div>
         <% } %>
+      </div>
     </div>
   </div>
-  
 </nav>
 
 <style>
+  .navbar {
+    transition: all 0.3s ease;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  .navbar.scrolled {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .brand-icon {
+    font-size: 1.6rem;
+    color: #f7575c;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-brand:hover .brand-icon {
+    transform: rotate(15deg);
+  }
+
+  .brand-text {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #f7575c;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-brand:hover .brand-text {
+    text-shadow: 0 0 10px rgba(247, 87, 92, 0.3);
+  }
+
   .btn-search {
     background-color: #f7575c;
     color: white;
-    border-radius: 5rem;
+    border-radius: 0 2rem 2rem 0;
+    transition: all 0.2s ease;
+    border: none;
+    padding: 0.5rem 1.25rem;
   }
+
   .btn-search:hover {
-    background-color: #f7575c;
+    background-color: #e04449;
     color: white;
+    transform: translateX(3px);
+    box-shadow: 0 4px 8px rgba(224, 68, 73, 0.3);
   }
-  .searchbar {
-    border-radius: 5rem;
-    width: 20rem;
+
+  .search-input {
+    border-radius: 2rem 0 0 2rem;
+    min-width: 18rem;
+    border-right: none;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.15);
   }
+
+  .search-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(247, 87, 92, 0.15);
+    border-color: rgba(247, 87, 92, 0.5);
+  }
+
+  .search-container {
+    flex-grow: 0.5;
+  }
+
+  /* Navbar Links Animation */
+  .hover-effect {
+    position: relative;
+  }
+
+  .hover-effect::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #f7575c;
+    transition: all 0.3s ease;
+  }
+
+  .hover-effect:hover::after {
+    width: 80%;
+    left: 10%;
+  }
+
+  /* User Dropdown Animation */
+  .animate {
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+  }
+
+  @keyframes slideIn {
+    0% {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0rem);
+      opacity: 1;
+    }
+  }
+
+  .slideIn {
+    animation-name: slideIn;
+  }
+
+  /* Login/Signup Buttons */
+  .login-btn {
+    margin-left: 0.5rem;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+  }
+
+  .signup-btn {
+    color: #f7575c !important;
+    font-weight: 600;
+  }
+
+  .host-link {
+    position: relative;
+    font-weight: 600;
+    color: #333 !important;
+    transition: all 0.3s ease;
+  }
+
+  .host-link:hover {
+    color: #f7575c !important;
+  }
+
+  @media (max-width: 768px) {
+    .search-container {
+      margin: 0.8rem 0;
+      width: 100%;
+    }
+
+    .search-input {
+      width: 100%;
+      min-width: auto;
+    }
+
+    .login-btn,
+    .signup-btn {
+      margin: 0.2rem 0;
+      display: block;
+      text-align: center;
+    }
+
+    .login-btn {
+      margin-left: 0;
+    }
+  }
+  .nav-link {
+    position: relative;
+    margin: 0 0.3rem;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .nav-link:hover {
+    color: #f7575c !important;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f7575c;
+    transition: width 0.3s;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .host-link {
+    font-weight: 600;
+  }
+
+  .login-btn,
+  .signup-btn {
+    font-weight: 600;
+  }
+
+  .user-menu {
+    background-color: #f8f9fa;
+    border-radius: 1.5rem;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    border: 1px solid #dee2e6;
+  }
+
+  .user-menu:hover {
+    background-color: #f1f3f5;
+  }
+
   .blur-background {
     backdrop-filter: blur(5px);
     border-radius: 15px;
@@ -46,24 +294,45 @@
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const navbarToggler = document.querySelector('.navbar-toggler');
-    const navbarCollapse = document.querySelector('#navbarNavAltMarkup');
+  document.addEventListener("DOMContentLoaded", function () {
+    const navbarToggler = document.querySelector(".navbar-toggler");
+    const navbarCollapse = document.querySelector("#navbarNavAltMarkup");
 
-    navbarToggler.addEventListener('click', function () {
-      if (navbarCollapse.classList.contains('show')) {
-        navbarCollapse.classList.remove('blur-background');
+    // Add scroll effect to navbar
+    window.addEventListener("scroll", function () {
+      const navbar = document.querySelector(".navbar");
+      if (window.scrollY > 50) {
+        navbar.classList.add("shadow");
       } else {
-        navbarCollapse.classList.add('blur-background');
+        navbar.classList.remove("shadow");
       }
     });
 
-    navbarCollapse.addEventListener('hidden.bs.collapse', function () {
-      navbarCollapse.classList.remove('blur-background');
+    navbarToggler.addEventListener("click", function () {
+      if (navbarCollapse.classList.contains("show")) {
+        navbarCollapse.classList.remove("blur-background");
+      } else {
+        navbarCollapse.classList.add("blur-background");
+      }
     });
 
-    navbarCollapse.addEventListener('shown.bs.collapse', function () {
-      navbarCollapse.classList.add('blur-background');
+    navbarCollapse.addEventListener("hidden.bs.collapse", function () {
+      navbarCollapse.classList.remove("blur-background");
     });
+
+    navbarCollapse.addEventListener("shown.bs.collapse", function () {
+      navbarCollapse.classList.add("blur-background");
+    });
+  });
+</script>
+<script>
+  // Navbar scroll effect
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
   });
 </script>

@@ -1,14 +1,277 @@
-<footer>
-    <div class="f-info">
-        <div class="f-info-socials">
-            <i class="fa-brands fa-square-facebook"></i>
-            <i class="fa-brands fa-square-instagram"></i>
-            <i class="fa-brands fa-linkedin"></i>
+<footer class="footer-section">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-top mb-5">
+        <div class="footer-logo">
+          <a href="/listings" class="d-flex align-items-center">
+            <i class="fa-regular fa-compass me-2 footer-logo-icon"></i>
+            <span class="footer-brand">HomeShare</span>
+          </a>
         </div>
-        <div class="f-info-brand">&copy; WonderLust Private Limited</div>
-        <div class="f-info-links">
-            <a href="/privacy">Privacy</a>
-            <a href="/terms">Terms</a>
+        <div class="language-selector">
+          <button class="btn lang-btn">
+            <i class="fa-solid fa-globe me-2"></i> English (US)
+          </button>
+          <button class="btn currency-btn">
+            <span class="me-2">₹</span> INR
+          </button>
         </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-xl-3 col-lg-3 col-md-6">
+          <div class="footer-widget">
+            <h4>Support</h4>
+            <ul class="footer-links">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">AirCover</a></li>
+              <li><a href="#">Safety Information</a></li>
+              <li><a href="#">Supporting people with disabilities</a></li>
+              <li><a href="#">Cancellation options</a></li>
+              <li><a href="#">Report neighborhood concern</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-3 col-md-6">
+          <div class="footer-widget">
+            <h4>Community</h4>
+            <ul class="footer-links">
+              <li><a href="#">HomeShare.org: disaster relief</a></li>
+              <li><a href="#">Combating discrimination</a></li>
+              <li><a href="#">Support Afghan refugees</a></li>
+              <li><a href="#">Celebrate diversity</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-3 col-md-6">
+          <div class="footer-widget">
+            <h4>Hosting</h4>
+            <ul class="footer-links">
+              <li><a href="#">Try hosting</a></li>
+              <li><a href="#">HomeShare for Hosts</a></li>
+              <li><a href="#">Explore hosting resources</a></li>
+              <li><a href="#">Visit our community forum</a></li>
+              <li><a href="#">How to host responsibly</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-3 col-md-6">
+          <div class="footer-widget">
+            <h4>Company</h4>
+            <ul class="footer-links">
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Investors</a></li>
+              <li><a href="#">Newsroom</a></li>
+              <li><a href="/terms">Terms</a></li>
+              <li><a href="/privacy">Privacy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="newsletter-section my-5">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="newsletter-content mb-3 mb-lg-0">
+              <h3>Subscribe to our newsletter</h3>
+              <p>
+                Get updates on travel inspirations, accommodations, and special
+                offers
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <form class="newsletter-form">
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter your email"
+                />
+                <button class="btn subscribe-btn" type="submit">
+                  Subscribe
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row align-items-center g-3">
+        <div class="col-md-6">
+          <div class="copyright">
+            <p>&copy; 2025 HomeShare, Inc. All rights reserved.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="footer-social-links">
+            <a href="#" aria-label="Visit our Facebook page"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="Visit our Twitter page"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" aria-label="Visit our Instagram page"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="Visit our LinkedIn page"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="#" aria-label="Visit our Pinterest page"
+              ><i class="fab fa-pinterest-p"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
+
+<style>
+  .footer-section {
+    background: #f8f9fa;
+    position: relative;
+  }
+
+  .footer-logo-icon {
+    color: #f7575c;
+    font-size: 1.8rem;
+  }
+
+  .footer-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #333;
+  }
+
+  .footer-widget-heading h3 {
+    color: #333;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .footer-widget-heading h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    height: 2px;
+    width: 40px;
+    background: #f7575c;
+  }
+
+  .footer-widget ul {
+    padding-left: 0;
+  }
+
+  .footer-widget ul li {
+    list-style: none;
+    margin-bottom: 12px;
+  }
+
+  .footer-widget ul li a {
+    color: #565656;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .footer-widget ul li a:hover {
+    color: #f7575c;
+    padding-left: 5px;
+  }
+
+  .footer-social-icon a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    color: #ffffff;
+    margin-right: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .footer-social-icon a:hover {
+    transform: translateY(-3px);
+  }
+
+  .facebook-bg {
+    background: #3b5998;
+  }
+
+  .twitter-bg {
+    background: #1da1f2;
+  }
+
+  .instagram-bg {
+    background: #e4405f;
+  }
+
+  .linkedin-bg {
+    background: #0077b5;
+  }
+
+  .subscribe-form {
+    position: relative;
+  }
+
+  .subscribe-form input {
+    width: 100%;
+    padding: 12px 28px;
+    background: #fff;
+    border: 1px solid #ced4da;
+    color: #333;
+    border-radius: 50px;
+    outline: none;
+  }
+
+  .subscribe-form button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #f7575c;
+    padding: 12px 15px;
+    border: none;
+    color: #fff;
+    border-radius: 0 50px 50px 0;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  .subscribe-form button:hover {
+    background: #e04449;
+  }
+
+  .copyright-area {
+    background: #f1f1f1;
+    padding: 15px 0;
+  }
+
+  .copyright-text p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .footer-widget {
+      text-align: center;
+    }
+
+    .footer-widget-heading h3::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+</style>

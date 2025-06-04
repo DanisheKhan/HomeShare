@@ -1,24 +1,265 @@
 <% layout("layouts/boilerplate.ejs") %>
-  <div class="row mt-3">
-    <h1 class="col-6 offset-3">SignUp for Wanderlust</h1>
-    <div class="col-6 offset-3">
-      <form action="/signup" method="POST" class="needs-validation" novalidate>
-        <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
-          <input name="username" type="text" class="form-control" id="username" required>
-          <div class="valid-feedback">looks fine!</div>
-        </div>
 
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input name="email" type="email" class="form-control" id="email" required>
-        </div>
+<section class="auth-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-8 col-sm-10">
+        <div class="auth-card animate__animated animate__fadeIn">
+          <div class="auth-header text-center mb-4">
+            <h2 class="auth-title">Create Account</h2>
+            <p class="auth-subtitle">Join HomeShare and start your journey</p>
+          </div>
 
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input name="password" type="password" class="form-control" id="password" required>
+          <form
+            action="/signup"
+            method="POST"
+            class="auth-form needs-validation"
+            novalidate
+          >
+            <div class="form-floating mb-3">
+              <input
+                name="username"
+                type="text"
+                class="form-control"
+                id="username"
+                placeholder="Username"
+                required
+              />
+              <label for="username"
+                ><i class="fa-solid fa-user me-2"></i>Username</label
+              >
+              <div class="invalid-feedback">Please choose a username</div>
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                name="email"
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Email"
+                required
+              />
+              <label for="email"
+                ><i class="fa-solid fa-envelope me-2"></i>Email address</label
+              >
+              <div class="invalid-feedback">Please provide a valid email</div>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                name="password"
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Password"
+                required
+                minlength="8"
+              />
+              <label for="password"
+                ><i class="fa-solid fa-lock me-2"></i>Password</label
+              >
+              <div class="invalid-feedback">
+                Password must be at least 8 characters
+              </div>
+              <div class="password-toggle">
+                <i class="fa-solid fa-eye" id="togglePassword"></i>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="terms"
+                  required
+                />
+                <label class="form-check-label" for="terms">
+                  I agree to the
+                  <a href="/terms" class="terms-link">Terms of Service</a> and
+                  <a href="/privacy" class="terms-link">Privacy Policy</a>
+                </label>
+                <div class="invalid-feedback">
+                  You must agree before submitting
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary w-100 py-2" type="submit">
+              <i class="fa-solid fa-user-plus me-2"></i>Create Account
+            </button>
+
+            <div class="auth-divider">
+              <span>OR</span>
+            </div>
+
+            <div class="social-login">
+              <button
+                type="button"
+                class="btn btn-outline-secondary social-btn"
+              >
+                <i class="fab fa-google me-2"></i>Sign up with Google
+              </button>
+            </div>
+          </form>
+
+          <div class="auth-footer text-center mt-4">
+            <p>
+              Already have an account?
+              <a href="/login" class="login-link">Sign in</a>
+            </p>
+          </div>
         </div>
-        <button class="btn btn-success">SingUp</button>
-      </form>
+      </div>
     </div>
   </div>
+</section>
+
+<style>
+  .auth-section {
+    padding: 2rem 0;
+  }
+
+  .auth-card {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .auth-title {
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .auth-subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .auth-form .form-floating label {
+    color: var(--text-muted);
+  }
+
+  .auth-form .form-control {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    padding-left: 1rem;
+  }
+
+  .auth-form .form-control:focus {
+    box-shadow: 0 0 0 4px rgba(247, 87, 92, 0.1);
+    border-color: var(--primary-color);
+  }
+
+  .form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  .terms-link {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  .terms-link:hover {
+    text-decoration: underline;
+  }
+
+  .password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-muted);
+  }
+
+  .auth-divider {
+    text-align: center;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+
+  .auth-divider:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-color);
+  }
+
+  .auth-divider span {
+    position: relative;
+    background-color: white;
+    padding: 0 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .social-login {
+    text-align: center;
+  }
+
+  .social-btn {
+    width: 100%;
+    border-radius: var(--radius-md);
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  .login-link {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .login-link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 576px) {
+    .auth-card {
+      padding: 1.5rem;
+      margin: 0 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Toggle password visibility
+  document
+    .getElementById("togglePassword")
+    ?.addEventListener("click", function () {
+      const passwordInput = document.getElementById("password");
+      const type =
+        passwordInput.getAttribute("type") === "password" ? "text" : "password";
+      passwordInput.setAttribute("type", type);
+      this.classList.toggle("fa-eye");
+      this.classList.toggle("fa-eye-slash");
+    });
+
+  // Form validation
+  (function () {
+    "use strict";
+    const forms = document.querySelectorAll(".needs-validation");
+    Array.from(forms).forEach((form) => {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
