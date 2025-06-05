@@ -279,6 +279,11 @@
     font-size: 1.5rem;
     color: #333;
     transition: all 0.3s ease;
+    text-decoration: none; /* Remove underline */
+  }
+
+  .footer-logo a {
+    text-decoration: none; /* Remove underline from the link */
   }
 
   .footer-logo a:hover .footer-brand {
@@ -326,27 +331,9 @@
     background: #f7575c;
     transition: all 0.3s ease;
   }
-
   .footer-widget {
     padding: 0.5rem;
     transition: all 0.3s ease;
-    animation: fadeInUp 0.5s ease-out;
-  }
-
-  .footer-widget:nth-child(1) {
-    animation-delay: 0.1s;
-  }
-
-  .footer-widget:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-
-  .footer-widget:nth-child(3) {
-    animation-delay: 0.3s;
-  }
-
-  .footer-widget:nth-child(4) {
-    animation-delay: 0.4s;
   }
 
   .footer-widget:hover .footer-heading::before {
@@ -550,72 +537,9 @@
     .copyright {
       text-align: center;
     }
-  }
-  /* Animation for footer elements */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .footer-animate {
-    animation: fadeInUp 0.6s ease-out forwards;
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
+  } /* Footer animations removed */
 </style>
 
 <script>
-  // Animate footer elements on scroll using Intersection Observer
-  document.addEventListener("DOMContentLoaded", function () {
-    const footerWidgets = document.querySelectorAll(".footer-widget");
-    const newsletterSection = document.querySelector(".newsletter-section");
-    const socialLinks = document.querySelectorAll(".social-link");
-
-    const fadeUpOptions = {
-      threshold: 0.3,
-      rootMargin: "0px 0px -50px 0px",
-    };
-
-    const fadeUpObserver = new IntersectionObserver(function (
-      entries,
-      observer
-    ) {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("footer-animate");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    fadeUpOptions);
-
-    // Observe footer widgets
-    footerWidgets.forEach((widget, index) => {
-      widget.style.opacity = "0";
-      widget.style.transform = "translateY(30px)";
-      widget.style.animationDelay = `${index * 100}ms`;
-      fadeUpObserver.observe(widget);
-    });
-
-    // Observe newsletter section
-    if (newsletterSection) {
-      newsletterSection.style.opacity = "0";
-      newsletterSection.style.transform = "translateY(30px)";
-      fadeUpObserver.observe(newsletterSection);
-    }
-
-    // Social links animation
-    socialLinks.forEach((link, index) => {
-      link.style.opacity = "0";
-      link.style.transform = "translateY(15px)";
-      link.style.transitionDelay = `${index * 100}ms`;
-      fadeUpObserver.observe(link);
-    });
-  });
+  // No animation on first appearance
 </script>
