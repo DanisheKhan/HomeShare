@@ -171,16 +171,19 @@ a:hover {
 
 .card-badge {
   position: absolute;
-  top: 15px;
-  left: 15px;
-  background-color: rgba(255, 255, 255, 0.9);
+  top: 12px;
+  left: 12px;
+  background-color: rgba(255, 255, 255, 0.95);
   color: var(--secondary-color);
-  padding: 0.3rem 0.8rem;
-  border-radius: 3rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1;  backdrop-filter: blur(2px);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2rem;
+  font-size: 0.7rem;
+  font-weight: 400;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  z-index: 1;
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .card-body {
@@ -272,19 +275,6 @@ a:hover {
 
 .card-img-container:hover .card-img-top {
   transform: scale(1.05);
-}
-
-.card-badge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background-color: var(--primary-color);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 2rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  z-index: 10;
 }
 
 /* Form Styles */
@@ -496,12 +486,12 @@ a:hover {
   .card-price {
     font-size: 0.9rem;
   }
-
   .card-badge {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.6rem;
-    top: 10px;
-    left: 10px;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+    top: 8px;
+    left: 8px;
+    font-weight: 400;
   }
 }
 
@@ -511,10 +501,10 @@ a:hover {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
-
   .card-badge {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.7rem;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.55rem;
+    font-weight: 400;
   }
 }
 
@@ -617,12 +607,12 @@ a:hover {
     flex-wrap: wrap;
     gap: 0.25rem;
   }
-
   .card-badge {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.4rem;
+    font-size: 0.6rem;
+    padding: 0.15rem 0.35rem;
     top: 6px;
     left: 6px;
+    font-weight: 400;
   }
 
   .card-price {
@@ -686,12 +676,12 @@ a:hover {
   .price-amount {
     font-size: 0.85rem;
   }
-
   .card-badge {
-    font-size: 0.6rem;
-    padding: 0.1rem 0.3rem;
+    font-size: 0.55rem;
+    padding: 0.1rem 0.25rem;
     top: 4px;
     left: 4px;
+    font-weight: 400;
   }
 
   .tax-info {

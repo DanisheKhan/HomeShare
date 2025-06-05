@@ -17,21 +17,37 @@
                 unforgettable accommodations with trusted hosts.
               </p>
               <div class="footer-social">
-                <a href="#" class="social-link facebook" aria-label="Facebook">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" class="social-link twitter" aria-label="Twitter">
-                  <i class="fab fa-twitter"></i>
+                <a
+                  href="https://github.com/DanisheKhan"
+                  class="social-link github"
+                  aria-label="GitHub"
+                  target="_blank"
+                >
+                  <i class="fab fa-github"></i>
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/danishkhan-jsx/"
+                  class="social-link linkedin"
+                  aria-label="LinkedIn"
+                  target="_blank"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="https://github.com/DanisheKhan"
                   class="social-link instagram"
                   aria-label="Instagram"
+                  target="_blank"
                 >
                   <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" class="social-link linkedin" aria-label="LinkedIn">
-                  <i class="fab fa-linkedin-in"></i>
+                <a
+                  href="https://wa.me/9322990946"
+                  class="social-link whatsapp"
+                  aria-label="WhatsApp"
+                  target="_blank"
+                >
+                  <i class="fab fa-whatsapp"></i>
                 </a>
               </div>
             </div>
@@ -92,23 +108,23 @@
               </ul>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- Footer Bottom -->
-      <div class="footer-bottom">
-        <div class="row justify-content-center">
-          <div class="col-md-12">
-            <div class="footer-legal">
-              <p>&copy; 2025 HomeShare, Inc. All rights reserved.</p>
-              <div class="legal-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Cookie Policy</a>
+          <div class="">
+            <div class="row justify-content-center">
+              <div class="col-md-12">
+                <div class="footer-legal">
+                  <p>&copy; 2025 HomeShare, Inc. All rights reserved.</p>
+                  <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- Footer Bottom -->
     </div>
   </div>
 </footer>
@@ -347,7 +363,6 @@
     transform: translateY(-3px) scale(1.05);
     box-shadow: var(--shadow-md, 0 8px 25px rgba(0, 0, 0, 0.15));
   }
-
   .social-link.facebook {
     background: #3b5998;
   }
@@ -367,12 +382,17 @@
   .social-link.linkedin {
     background: #0077b5;
   }
-
+  .social-link.github {
+    background: #333;
+  }
+  .social-link.whatsapp {
+    background: #25d366;
+  }
   /* Footer Links Sections */
   .footer-links-section {
     padding-left: 1rem;
   }
-  . {
+  .footer-links-section h4 {
     color: var(--text-dark, #222);
     font-size: 1.2rem;
     font-weight: 700;
@@ -381,7 +401,7 @@
     padding-bottom: 0.5rem;
   }
 
-  .::after {
+  .footer-links-section h4::after {
     content: "";
     position: absolute;
     left: 0;
@@ -395,8 +415,7 @@
     border-radius: 2px;
     transition: width 0.3s ease;
   }
-
-  .footer-links-section:hover .::after {
+  .footer-links-section:hover h4::after {
     width: 50px;
   }
 
