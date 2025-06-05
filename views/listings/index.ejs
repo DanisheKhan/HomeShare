@@ -4,6 +4,41 @@
   .listings-section {
     padding: 1rem 0 3rem;
   }
+  /* Mobile container optimizations */
+  @media (max-width: 575.98px) {
+    .listings-section {
+      padding: 0.5rem 0 1.5rem;
+    }
+
+    .listings-header {
+      margin-bottom: 1rem;
+      padding: 0 0.25rem;
+    }
+
+    .listings-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .listings-subtitle {
+      font-size: 0.95rem;
+      padding: 0 0.25rem;
+    }
+  }
+
+  @media (max-width: 375px) {
+    .listings-section {
+      padding: 0.375rem 0 1.25rem;
+    }
+
+    .listings-title {
+      font-size: 1.25rem;
+    }
+
+    .listings-subtitle {
+      font-size: 0.9rem;
+    }
+  }
 
   .listings-header {
     text-align: center;
@@ -158,9 +193,9 @@
   }
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
+    width: 100%;
   }
 
   .no-results {
@@ -190,7 +225,6 @@
     max-width: 500px;
     margin: 0 auto 1.5rem;
   }
-
   @media screen and (max-width: 992px) {
     .filters-container {
       flex-direction: column;
@@ -230,6 +264,12 @@
       font-size: 0.75rem;
     }
   }
+
+  @media screen and (max-width: 375px) {
+    .listings-title {
+      font-size: 1.35rem;
+    }
+  }
 </style>
 
 <section class="listings-section">
@@ -248,7 +288,7 @@
     <% } %>
   </div>
   <!-- Location Filters -->
-  
+
   <% if(allListings.length === 0) { %>
   <div class="no-results">
     <div class="no-results-icon">
@@ -259,49 +299,48 @@
     <a href="/listings" class="btn btn-primary mt-3">View all listings</a>
   </div>
   <% } else { %>
-  <div class="card-grid">
-    <% for (let listing of allListings) { %>
-    <div class="card listing-card">
-      <a href="/listings/<%= listing._id %>" class="listing-link">
-        <div class="card-img-container">
-          <img
-            src="<%= listing.image.url %>"
-            class="card-img-top"
-            alt="<%= listing.title %>"
-          />
-          <div class="card-img-overlay">
-            <div class="overlay-icon">
-              <i class="fa-regular fa-heart"></i>
+  <div class="container-fluid px-0">
+    <div class="card-grid">
+      <% for (let listing of allListings) { %>
+      <div class="card listing-card card-hover-effect">
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+          <div class="card-img-container card-img-animation">
+            <img
+              src="<%= listing.image.url %>"
+              class="card-img-top"
+              alt="<%= listing.title %>"
+              loading="lazy"
+            />
+            <div class="card-badge">
+              <i class="fa-solid fa-location-dot me-1"></i><%= listing.location
+              %>
             </div>
           </div>
-          <div class="card-badge">
-            <i class="fa-solid fa-location-dot me-1"></i><%= listing.location %>
-          </div>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"><%= listing.title %></h5>
-          <p class="card-text text-truncate"><%= listing.description %></p>
-          <div class="card-meta">
-            <div class="d-flex align-items-center">
-              <span class="rating me-2">
-                <i class="fa-solid fa-star"></i> 4.8
-              </span>
-              <span class="reviews">(42 reviews)</span>
+          <div class="card-body">
+            <h5 class="card-title"><%= listing.title %></h5>
+            <p class="card-text"><%= listing.description %></p>
+            <div class="card-meta">
+              <div class="d-flex align-items-center">
+                <span class="rating me-2">
+                  <i class="fa-solid fa-star"></i> 4.8
+                </span>
+                <span class="reviews">(42 reviews)</span>
+              </div>
             </div>
+            <p class="card-price">
+              <span class="price-amount"
+                >₹<%= listing.price.toLocaleString("en-IN") %></span
+              >
+              / night
+              <span class="tax-info badge rounded-pill text-bg-light"
+                >+ 18% tax</span
+              >
+            </p>
           </div>
-          <p class="card-price">
-            <span class="price-amount"
-              >₹<%= listing.price.toLocaleString("en-IN") %></span
-            >
-            / night
-            <span class="tax-info badge rounded-pill text-bg-light"
-              >+ 18% tax</span
-            >
-          </p>
-        </div>
-      </a>
+        </a>
+      </div>
+      <% } %>
     </div>
-    <% } %>
   </div>
   <% } %>
 

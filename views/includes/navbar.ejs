@@ -5,7 +5,7 @@
       <span class="brand-text">HomeShare</span>
     </a>
     <button
-      class="navbar-toggler"
+      class="navbar-toggler border-0"
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarNavAltMarkup"
@@ -16,9 +16,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
+      <div class="navbar-nav nav-section">
         <a class="nav-link hover-effect" href="/listings">
-          <i class="fa-solid fa-globe me-2"></i> Explore
+          <i class="fa-solid fa-globe me-2"></i> <span>Explore</span>
         </a>
       </div>
       <div class="navbar-nav mx-auto search-container">
@@ -30,7 +30,7 @@
             <input
               class="form-control search-input"
               type="search"
-              placeholder="Search by location or country..."
+              placeholder="Search locations..."
               name="search"
               aria-label="Search locations"
               value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"
@@ -46,20 +46,20 @@
           </datalist>
         </form>
       </div>
-      <div class="navbar-nav ms-auto">
+      <div class="navbar-nav ms-auto nav-section">
         <a class="nav-link hover-effect" href="/listings/new">
-          <i class="fa-solid fa-house-user me-2"></i> Host Your Home
+          <i class="fa-solid fa-house-user me-2"></i> <span>Host Home</span>
         </a>
         <% if (typeof currUser === 'undefined' || currUser === null) { %>
         <a class="nav-link hover-effect" href="/signup">
-          <i class="fa-solid fa-user-plus me-2"></i> Signup
+          <i class="fa-solid fa-user-plus me-2"></i> <span>Signup</span>
         </a>
         <a class="nav-link hover-effect" href="/login">
-          <i class="fa-solid fa-right-to-bracket me-2"></i> Login
+          <i class="fa-solid fa-right-to-bracket me-2"></i> <span>Login</span>
         </a>
         <% } else { %>
         <a class="nav-link hover-effect" href="/logout">
-          <i class="fa-solid fa-sign-out-alt me-2"></i> Logout
+          <i class="fa-solid fa-sign-out-alt me-2"></i> <span>Logout</span>
         </a>
         <% } %>
       </div>
@@ -101,30 +101,61 @@
   .navbar-brand:hover .brand-text {
     text-shadow: 0 0 10px rgba(247, 87, 92, 0.3);
   }
+
+  /* Navigation section styling */
+  .nav-section {
+    display: flex;
+    align-items: center;
+  }
+
   .search-form {
     position: relative;
+    width: 100%;
+  }
+
+  .search-container {
+    flex-grow: 0.5;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .input-group {
+    width: 100%;
+    border-radius: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .input-group:focus-within {
+    box-shadow: 0 4px 12px rgba(247, 87, 92, 0.15);
   }
 
   .btn-search {
     background-color: #f7575c;
     color: white;
     border-radius: 0 2rem 2rem 0;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     border: none;
     padding: 0.5rem 1.25rem;
     box-shadow: 0 2px 5px rgba(247, 87, 92, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
   }
 
   .btn-search:hover {
     background-color: #e04449;
     color: white;
-    transform: translateX(3px);
+    transform: translateX(2px);
     box-shadow: 0 4px 8px rgba(224, 68, 73, 0.3);
   }
 
   .search-input {
     border-radius: 0;
-    min-width: 20rem;
     border-right: none;
     border-left: none;
     transition: all 0.3s ease;
@@ -132,6 +163,8 @@
     border: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: none;
     font-size: 0.95rem;
+    width: 100%;
+    flex: 1;
   }
 
   .search-input:focus {
@@ -150,6 +183,9 @@
     transition: all 0.3s ease;
     border: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    min-width: 50px;
   }
 
   .input-group.search-focused .search-icon {
@@ -161,14 +197,7 @@
     box-shadow: 0 4px 8px rgba(224, 68, 73, 0.2);
   }
 
-  .search-input:focus {
-    box-shadow: 0 0 0 0.25rem rgba(247, 87, 92, 0.15);
-    border-color: rgba(247, 87, 92, 0.5);
-  }
-
-  .search-container {
-    flex-grow: 0.5;
-  } /* Navbar Links Animation - Left to Right Effect */
+  /* Navbar Links Animation - Left to Right Effect */
   .hover-effect {
     position: relative;
   }
@@ -209,17 +238,31 @@
 
   .slideIn {
     animation-name: slideIn;
-  } /* Navbar Buttons with consistent styling */
+  }
+
+  /* Navbar Buttons with consistent styling */
   .nav-link {
     color: #333 !important;
     font-weight: 600;
     transition: all 0.3s ease;
     margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
   }
 
   .nav-link:hover {
     color: #f7575c !important;
   }
+
+  .nav-link i {
+    transition: transform 0.3s ease;
+  }
+
+  .nav-link:hover i {
+    transform: translateY(-2px);
+  }
+
   /* Styling for dropdown toggle */
   .dropdown-toggle::after {
     margin-left: 0.4em;
@@ -245,6 +288,7 @@
   .nav-link.dropdown-toggle.hover-effect:hover::after {
     display: none;
   }
+
   /* Custom underline effect for account button - Left to Right */
   .nav-link.dropdown-toggle.hover-effect {
     position: relative;
@@ -280,37 +324,138 @@
     transform: translateY(2px);
   }
 
-  /* Host link styling merged with general nav-link styling */
-
-  @media (max-width: 768px) {
+  /* Large devices (desktops, less than 1200px) */
+  @media (max-width: 1199.98px) {
     .search-container {
-      margin: 0.8rem 0;
+      max-width: 450px;
+    }
+  }
+
+  /* Medium devices (tablets, less than 992px) */
+  @media (max-width: 991.98px) {
+    .search-container {
+      margin: 1rem 0;
+      max-width: 100%;
+      order: 1;
+    }
+
+    .navbar-collapse {
+      padding-top: 0.5rem;
+    }
+
+    .navbar-nav {
       width: 100%;
     }
 
-    .search-input {
-      width: 100%;
-      min-width: auto;
+    .navbar-nav:not(.search-container) {
+      flex-direction: row !important;
+      flex-wrap: wrap;
+      justify-content: center;
     }
+
+    .navbar-nav.ms-auto {
+      margin-top: 0.75rem;
+      justify-content: center;
+      border-top: 1px solid rgba(247, 87, 92, 0.1);
+      padding-top: 0.75rem;
+    }
+
     .nav-link {
-      margin: 0.2rem 0;
-      display: block;
+      margin: 0.3rem 0.5rem;
+      padding: 0.6rem 1rem;
       text-align: center;
+      justify-content: center;
+      display: inline-flex;
+      border-radius: 2rem;
+      background-color: rgba(247, 87, 92, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      background-color: rgba(247, 87, 92, 0.1);
+    }
+
+    /* Disable underline effect on mobile */
+    .hover-effect::after {
+      display: none;
     }
   }
-  .nav-link {
-    position: relative;
-    margin: 0 0.3rem;
-    font-weight: 500;
-    transition: color 0.3s;
+
+  /* Small devices (landscape phones, less than 768px) */
+  @media (max-width: 767.98px) {
+    .navbar-collapse {
+      padding: 1rem 0;
+      margin-top: 0.5rem;
+      background-color: white;
+      border-radius: 1rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-container {
+      margin: 1rem 0;
+      padding: 0 1rem;
+    }
+
+    .nav-link {
+      margin: 0.25rem;
+      width: calc(50% - 0.5rem);
+      max-width: 175px;
+      border: 1px solid rgba(247, 87, 92, 0.1);
+    }
+
+    .navbar-nav:not(.search-container) {
+      padding: 0 0.5rem;
+    }
   }
 
-  .nav-link:hover {
-    color: #f7575c !important;
+  /* Extra small devices (portrait phones, less than 576px) */
+  @media (max-width: 575.98px) {
+    .navbar-brand .brand-text {
+      font-size: 1.2rem;
+    }
+
+    .navbar-brand {
+      margin-right: 0;
+    }
+
+    .brand-icon {
+      font-size: 1.4rem;
+    }
+
+    .search-icon {
+      padding-left: 0.75rem;
+    }
+
+    .btn-search {
+      padding: 0.5rem 0.75rem;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+      width: calc(50% - 0.5rem);
+    }
+
+    .nav-link i {
+      margin-right: 0.35rem !important;
+    }
+
+    .container-fluid {
+      padding: 0 0.75rem;
+    }
   }
 
-  /* Removing conflicting underline style that was causing issues */
-  /* User menu styling removed and using signup-btn styling instead */
+  /* Very small devices */
+  @media (max-width: 359.98px) {
+    .nav-link {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .navbar-brand .brand-text {
+      font-size: 1.1rem;
+    }
+  }
 
   .dropdown-menu {
     animation-name: slideIn;
@@ -358,6 +503,7 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    // Existing scripts
     const navbarToggler = document.querySelector(".navbar-toggler");
     const navbarCollapse = document.querySelector("#navbarNavAltMarkup");
 
@@ -385,7 +531,58 @@
 
     navbarCollapse.addEventListener("shown.bs.collapse", function () {
       navbarCollapse.classList.add("blur-background");
-    });
+    }); // Add search focus behavior
+    const searchInput = document.querySelector(".search-input");
+    const inputGroup = document.querySelector(".input-group");
+
+    if (searchInput && inputGroup) {
+      searchInput.addEventListener("focus", function () {
+        inputGroup.classList.add("search-focused");
+      });
+
+      searchInput.addEventListener("blur", function () {
+        inputGroup.classList.remove("search-focused");
+      });
+    }
+
+    // Improve mobile navigation experience
+    const navLinks = document.querySelectorAll(".nav-link");
+    const isSmallScreen = window.innerWidth < 992;
+
+    if (isSmallScreen) {
+      navLinks.forEach((link) => {
+        link.addEventListener("click", function () {
+          // Add a slight delay before navigating to show the tap effect
+          const href = this.getAttribute("href");
+          if (href && href !== "#") {
+            this.classList.add("active");
+            setTimeout(() => {
+              window.location.href = href;
+            }, 150);
+          }
+        });
+      });
+    }
+
+    // Adjust nav sections on window resize
+    function adjustNavLayout() {
+      const isSmallScreen = window.innerWidth < 992;
+      const navSections = document.querySelectorAll(".nav-section");
+
+      if (isSmallScreen) {
+        navSections.forEach((section) => {
+          section.classList.add("justify-content-center");
+        });
+      } else {
+        navSections.forEach((section) => {
+          section.classList.remove("justify-content-center");
+        });
+      }
+    }
+
+    // Initial call and add resize listener
+    adjustNavLayout();
+    window.addEventListener("resize", adjustNavLayout);
   });
 </script>
 <script>

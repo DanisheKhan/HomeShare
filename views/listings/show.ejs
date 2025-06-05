@@ -228,6 +228,11 @@
     box-shadow: var(--shadow-md);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .booking-widget:hover {
+    box-shadow: var(--shadow-lg);
   }
 
   .booking-header {
@@ -235,6 +240,8 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
   .price-info {
@@ -244,7 +251,6 @@
   .price {
     font-weight: 700;
   }
-
   .booking-dates {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -252,6 +258,12 @@
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .booking-dates:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 1px rgba(247, 87, 92, 0.25);
   }
 
   .checkin,
@@ -269,6 +281,8 @@
     font-weight: 600;
     color: var(--text-muted);
     margin-bottom: 0.25rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
   }
 
   .booking-dates input,
@@ -276,11 +290,14 @@
     border: none;
     padding: 0.25rem 0;
     font-size: 0.9rem;
+    color: var(--secondary-color);
+    font-weight: 500;
   }
 
   .booking-dates input:focus,
   .booking-guests select:focus {
     box-shadow: none;
+    outline: none;
   }
 
   .booking-guests {
@@ -288,13 +305,23 @@
     border-radius: 8px;
     padding: 0.5rem;
     margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
   }
 
+  .booking-guests:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 1px rgba(247, 87, 92, 0.25);
+  }
   .booking-btn {
-    width: 100%;
-    padding: 0.75rem;
-    font-weight: 500;
+    padding: 0.75rem 0;
+    font-weight: 600;
+    transition: all 0.3s ease;
     margin-bottom: 0.5rem;
+  }
+
+  .booking-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(247, 87, 92, 0.25);
   }
 
   .booking-note {
@@ -316,10 +343,10 @@
     font-size: 0.95rem;
     color: var(--text-color);
   }
-
   .breakdown-item.total {
     font-weight: 600;
     padding-top: 0.75rem;
+    margin-top: 0.75rem;
     border-top: 1px solid var(--border-color);
   }
 
@@ -501,16 +528,67 @@
     color: var(--text-muted);
     font-size: 0.95rem;
   }
+  /* Enhanced Media Queries */
+  @media screen and (min-width: 1400px) {
+    .main-image {
+      height: 550px;
+    }
 
-  /* Media Queries */
+    .listing-title {
+      font-size: 2rem;
+    }
+
+    .amenities-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 1200px) and (max-width: 1399.98px) {
+    .main-image {
+      height: 500px;
+    }
+
+    .amenities-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 992px) and (max-width: 1199.98px) {
+    .main-image {
+      height: 450px;
+    }
+
+    .amenities-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  }
+
   @media screen and (max-width: 992px) {
     .booking-widget {
       position: static;
       margin-top: 2rem;
+      max-width: 450px;
     }
 
     .things-to-know {
       position: static;
+      max-width: 450px;
+      margin: 0 auto;
+    }
+
+    .amenities-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 991.98px) {
+    .main-image {
+      height: 380px;
+    }
+
+    .listing-title {
+      font-size: 1.65rem;
     }
   }
 
@@ -527,6 +605,30 @@
 
     .rating-bars {
       grid-template-columns: 1fr;
+    }
+
+    .listing-title {
+      font-size: 1.6rem;
+    }
+
+    .amenities-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .amenity-item {
+      font-size: 0.9rem;
+    }
+
+    .info-group h4 {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media screen and (min-width: 577px) and (max-width: 767.98px) {
+    .gallery-action-btn {
+      padding: 0.45rem 0.9rem;
+      font-size: 0.9rem;
     }
   }
 
@@ -553,6 +655,54 @@
     .listing-highlights {
       grid-template-columns: 1fr;
       gap: 1rem;
+    }
+
+    .amenities-grid {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .review-card {
+      padding: 1.25rem;
+    }
+
+    .review-date {
+      font-size: 0.8rem;
+    }
+
+    .review-content {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media screen and (max-width: 375.98px) {
+    .main-image {
+      height: 200px;
+    }
+
+    .listing-title {
+      font-size: 1.35rem;
+    }
+
+    .gallery-action-btn {
+      padding: 0.35rem 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .host-label {
+      font-size: 1rem;
+    }
+
+    .host-info {
+      font-size: 0.85rem;
+    }
+
+    .review-title {
+      font-size: 1.3rem;
+    }
+
+    .starability-result {
+      height: 25px;
     }
   }
 </style>
@@ -714,16 +864,15 @@
                 <span class="reviews-count">42 reviews</span>
               </div>
             </div>
-
             <form class="booking-form">
               <div class="booking-dates">
                 <div class="checkin">
                   <label>CHECK-IN</label>
-                  <input type="date" class="form-control" />
+                  <input type="date" class="form-control" required />
                 </div>
                 <div class="checkout">
                   <label>CHECKOUT</label>
-                  <input type="date" class="form-control" />
+                  <input type="date" class="form-control" required />
                 </div>
               </div>
 
@@ -737,10 +886,10 @@
                 </select>
               </div>
 
-              <button type="button" class="btn btn-primary booking-btn">
+              <button type="button" class="btn btn-primary booking-btn w-100">
                 Reserve
               </button>
-              <p class="booking-note">You won't be charged yet</p>
+              <p class="booking-note text-center">You won't be charged yet</p>
 
               <div class="booking-breakdown">
                 <div class="breakdown-item">
