@@ -21,6 +21,7 @@ const { isLoggedIn } = require("./middleware.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const apiRouter = require("./routes/api.js");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -44,8 +45,8 @@ main()
 async function main() {
   await mongoose.connect(dbUrl);
 }
-app.listen(8080, () => {
-  console.log("server is started");
+app.listen(3000, () => {
+  console.log("server started on port 3000");
 });
 
 const store = MongoStore.create({
@@ -56,7 +57,7 @@ const store = MongoStore.create({
   },
 });
 
-store.on("error",  (error)=> {
+store.on("error", (error) => {
   console.log("Session Store Error", error);
 });
 
@@ -102,10 +103,11 @@ app.use((req, res, next) => {
 //   res.send(registeredUser);
 // });
 
-// Mount the listings route
+// Mount the routes
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
+app.use("/api", apiRouter);
 
 // for all pages error handling
 app.all("*", (req, res, next) => {

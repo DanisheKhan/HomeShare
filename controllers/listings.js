@@ -4,8 +4,54 @@ const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({});
-  res.render("listings/index", { allListings });
+  let query = {};
+
+  // Check if search parameter exists
+  if (req.query.search) {
+    const searchTerm = req.query.search.trim();
+
+    if (searchTerm) {
+      // Create a case-insensitive search for location or country
+      const searchPattern = new RegExp(searchTerm, "i");
+      query = {
+        $or: [
+          { location: searchPattern },
+          { country: searchPattern },
+          { title: searchPattern },
+        ],
+      };
+    }
+  }
+
+  // Handle filter parameter
+  const filterMap = {
+    beach: { description: { $regex: /beach|ocean|sea|coast/i } },
+    mountain: { description: { $regex: /mountain|hill|peak|trek|hiking/i } },
+    city: { description: { $regex: /city|urban|downtown|metropolitan/i } },
+    countryside: { description: { $regex: /countryside|rural|farm|village/i } },
+    tropical: { description: { $regex: /tropical|palm|island|paradise/i } },
+    skiing: { description: { $regex: /ski|snow|winter|slope/i } },
+    lake: { description: { $regex: /lake|lakefront|lakeside|water/i } },
+    historic: {
+      description: { $regex: /historic|heritage|ancient|classic|old/i },
+    },
+  };
+
+  if (req.query.filter && filterMap[req.query.filter]) {
+    // If we already have search criteria, combine them with an $and
+    if (Object.keys(query).length > 0) {
+      query = { $and: [query, filterMap[req.query.filter]] };
+    } else {
+      query = filterMap[req.query.filter];
+    }
+  }
+
+  const allListings = await Listing.find(query);
+  res.render("listings/index", {
+    allListings,
+    searchQuery: req.query.search || "",
+    activeFilter: req.query.filter || "all",
+  });
 };
 
 module.exports.renderNewForm = (req, res) => {

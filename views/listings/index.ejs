@@ -156,12 +156,39 @@
     background-color: var(--primary-color);
     border-color: var(--primary-color);
   }
-
   .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 4rem 1rem;
+    background-color: #f8f9fa;
+    border-radius: var(--radius-lg);
+    margin: 2rem 0;
+  }
+
+  .no-results-icon {
+    font-size: 4rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .no-results h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+  }
+
+  .no-results p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
   }
 
   @media screen and (max-width: 992px) {
@@ -207,22 +234,31 @@
 
 <section class="listings-section">
   <div class="listings-header mb-4">
+    <% if(typeof searchQuery !== 'undefined' && searchQuery) { %>
+    <h1 class="listings-title">Search Results: "<%= searchQuery %>"</h1>
+    <p class="listings-subtitle">
+      <%= allListings.length %> <%= allListings.length === 1 ? 'property' :
+      'properties' %> found
+    </p>
+    <% } else { %>
     <h1 class="listings-title">Explore Destinations</h1>
     <p class="listings-subtitle">
       Discover unique places to stay around the world
     </p>
+    <% } %>
   </div>
-
-  <!-- Uncomment and fix when needed
-  <div class="filters-container">
-    <div class="tax-toggle">
-      <div class="form-check-reverse form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Display Total After Taxes</label>
-      </div>
+  <!-- Location Filters -->
+  
+  <% if(allListings.length === 0) { %>
+  <div class="no-results">
+    <div class="no-results-icon">
+      <i class="fa-solid fa-house-circle-xmark"></i>
     </div>
+    <h3>No listings found</h3>
+    <p>Try adjusting your search criteria or explore different locations</p>
+    <a href="/listings" class="btn btn-primary mt-3">View all listings</a>
   </div>
-  -->
+  <% } else { %>
   <div class="card-grid">
     <% for (let listing of allListings) { %>
     <div class="card listing-card">
@@ -267,6 +303,7 @@
     </div>
     <% } %>
   </div>
+  <% } %>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -296,10 +333,9 @@
 
         nextBtn.addEventListener("click", function () {
           filterContainer.scrollBy({ left: scrollAmount, behavior: "smooth" });
-        });
-
-        // Handle filter selection
+        }); // Handle filter selection
         const filters = document.querySelectorAll(".filter");
+        const listingCards = document.querySelectorAll(".listing-card");
 
         filters.forEach((filter) => {
           filter.addEventListener("click", function () {
@@ -312,16 +348,18 @@
             // Get filter value
             const filterValue = this.getAttribute("data-filter");
 
-            // Here you would implement the actual filtering logic
-            console.log("Filter selected:", filterValue);
+            // Get current search query from URL if any
+            const currentUrl = new URL(window.location.href);
+            const searchQuery = currentUrl.searchParams.get("search") || "";
 
-            // For demonstration, we'll just show an alert
+            // Add filter to URL and redirect
             if (filterValue !== "all") {
-              // You would replace this with actual filtering logic
-              // showFilteredListings(filterValue);
+              currentUrl.searchParams.set("filter", filterValue);
+              window.location.href = currentUrl.toString();
             } else {
-              // Show all listings
-              // showAllListings();
+              // If 'all' is selected, remove filter parameter
+              currentUrl.searchParams.delete("filter");
+              window.location.href = currentUrl.toString();
             }
           });
         });

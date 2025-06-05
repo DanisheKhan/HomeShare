@@ -22,19 +22,28 @@
         </a>
       </div>
       <div class="navbar-nav mx-auto search-container">
-        <form class="d-flex" action="/listings" method="GET">
+        <form class="d-flex search-form" action="/listings" method="GET">
           <div class="input-group">
+            <span class="input-group-text search-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </span>
             <input
               class="form-control search-input"
               type="search"
-              placeholder="Search Destinations"
+              placeholder="Search by location or country..."
               name="search"
-              aria-label="Search"
+              aria-label="Search locations"
+              value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"
+              autocomplete="off"
+              list="location-suggestions"
             />
             <button class="btn btn-search" type="submit">
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
+          <datalist id="location-suggestions">
+            <!-- Common locations will be dynamically populated -->
+          </datalist>
         </form>
       </div>
       <div class="navbar-nav ms-auto">
@@ -118,6 +127,9 @@
   .navbar-brand:hover .brand-text {
     text-shadow: 0 0 10px rgba(247, 87, 92, 0.3);
   }
+  .search-form {
+    position: relative;
+  }
 
   .btn-search {
     background-color: #f7575c;
@@ -126,6 +138,7 @@
     transition: all 0.2s ease;
     border: none;
     padding: 0.5rem 1.25rem;
+    box-shadow: 0 2px 5px rgba(247, 87, 92, 0.2);
   }
 
   .btn-search:hover {
@@ -136,12 +149,42 @@
   }
 
   .search-input {
-    border-radius: 2rem 0 0 2rem;
-    min-width: 18rem;
+    border-radius: 0;
+    min-width: 20rem;
     border-right: none;
+    border-left: none;
     transition: all 0.3s ease;
-    padding: 0.5rem 1.25rem;
+    padding: 0.5rem 1rem;
     border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: none;
+    font-size: 0.95rem;
+  }
+
+  .search-input:focus {
+    box-shadow: none;
+    border-color: rgba(0, 0, 0, 0.15);
+    outline: none;
+    background-color: #f9f9f9;
+  }
+
+  .search-icon {
+    background-color: white;
+    border-radius: 2rem 0 0 2rem;
+    border-right: none;
+    color: #f7575c;
+    padding-left: 1.25rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+
+  .input-group.search-focused .search-icon {
+    background-color: #f9f9f9;
+    color: #e04449;
+  }
+
+  .input-group.search-focused .btn-search {
+    box-shadow: 0 4px 8px rgba(224, 68, 73, 0.2);
   }
 
   .search-input:focus {
