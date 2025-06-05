@@ -1,18 +1,41 @@
 :root {
-  --primary-color: #f7575c;
-  --primary-hover: #e04449;
-  --secondary-color: #333333;
+  --primary-color: #ff385c;
+  --primary-hover: #e31c5f;
+  --primary-light: rgba(255, 56, 92, 0.1);
+  --primary-gradient: linear-gradient(135deg, #ff385c 0%, #e91e63 100%);
+  --secondary-color: #222222;
+  --secondary-light: #333333;
   --light-color: #f8f9fa;
+  --background-color: #ffffff;
+  --background-light: #f8f9fa;
   --border-color: #dee2e6;
+  --border-light: rgba(0, 0, 0, 0.05);
   --text-color: #222222;
+  --text-dark: #222222;
+  --text-secondary: #495057;
   --text-muted: #6c757d;
+  --text-light: rgba(255, 255, 255, 0.9);
+  --white: #ffffff;
+  --black: #000000;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --error-light: rgba(239, 68, 68, 0.15);
+  --shadow-xs: 0 2px 8px rgba(0, 0, 0, 0.05);
   --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+  --border-radius-pill: 50px;
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 1rem;
+  --radius-xl: 50px;
   --transition: all 0.3s ease;
+  --transition-all: all 0.3s ease;
+  --backdrop-blur: blur(10px);
 }
 
 * {

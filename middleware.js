@@ -7,7 +7,18 @@ const { listingSchema, reviewSchema } = require("./schema.js");
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
     req.session.redirectUrl = req.originalUrl;
-    req.flash("error", "You must be signed in first!");
+
+    // Provide context-specific messages based on the requested URL
+    let message = "You must be signed in first!";
+    if (req.originalUrl === "/listings/new") {
+      message = "Please login first to host your home!";
+    } else if (req.originalUrl.includes("/edit")) {
+      message = "Please login first to edit your listing!";
+    } else if (req.originalUrl.includes("/reviews")) {
+      message = "Please login first to leave a review!";
+    }
+
+    req.flash("error", message);
     return res.redirect("/login");
   }
   next();
@@ -43,7 +54,6 @@ module.exports.validateListing = (req, res, next) => {
   }
 };
 
-
 // joi validation for review
 module.exports.validateReview = (req, res, next) => {
   let { error } = reviewSchema.validate(req.body);
@@ -54,7 +64,6 @@ module.exports.validateReview = (req, res, next) => {
     next();
   }
 };
-
 
 module.exports.isReviewAuthor = async (req, res, next) => {
   let { id, reviewId } = req.params;
