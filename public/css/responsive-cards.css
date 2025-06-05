@@ -79,9 +79,7 @@
     font-size: 0.9rem;
   }
 
-  .card-img-container {
-    aspect-ratio: 5/3;
-  }
+
 
   /* Optimize for touch interactions */
   .listing-card {
