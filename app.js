@@ -91,6 +91,14 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user; // Ensure currUser is set here
+
+  // Default title and description for pages that don't set these explicitly
+  res.locals.title =
+    res.locals.title || "HomeShare - Find Your Perfect Accommodation";
+  res.locals.description =
+    res.locals.description ||
+    "Discover and share accommodations worldwide. Find rooms, apartments, and homes for your next stay or list your property.";
+
   next();
 });
 
@@ -117,6 +125,10 @@ app.all("*", (req, res, next) => {
 // error handler
 app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Something Went Wrong" } = err;
-  res.status(statusCode).render("error.ejs", { message });
+  res.status(statusCode).render("error.ejs", {
+    message,
+    title: `Error ${statusCode}`,
+    description: `An error occurred: ${message}`,
+  });
   // res.status(statusCode).send(message);
 });

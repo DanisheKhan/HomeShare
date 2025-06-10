@@ -5,6 +5,9 @@ const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res) => {
   let query = {};
+  let pageTitle = "All Listings";
+  let pageDescription =
+    "Browse all available accommodations worldwide on HomeShare.";
 
   // Check if search parameter exists
   if (req.query.search) {
@@ -20,6 +23,8 @@ module.exports.index = async (req, res) => {
           { title: searchPattern },
         ],
       };
+      pageTitle = `Search results for "${searchTerm}"`;
+      pageDescription = `Find the best accommodations matching "${searchTerm}" on HomeShare.`;
     }
   }
 
@@ -45,17 +50,30 @@ module.exports.index = async (req, res) => {
       query = filterMap[req.query.filter];
     }
   }
-
   const allListings = await Listing.find(query);
+
+  // If filter is applied, update page title and description
+  if (req.query.filter && req.query.filter !== "all") {
+    pageTitle = `${
+      req.query.filter.charAt(0).toUpperCase() + req.query.filter.slice(1)
+    } Accommodations`;
+    pageDescription = `Discover amazing ${req.query.filter} accommodations on HomeShare.`;
+  }
+
   res.render("listings/index", {
     allListings,
     searchQuery: req.query.search || "",
     activeFilter: req.query.filter || "all",
+    title: pageTitle,
+    description: pageDescription,
   });
 };
 
 module.exports.renderNewForm = (req, res) => {
-  res.render("listings/new.ejs");
+  res.render("listings/new.ejs", {
+    title: "Create New Listing",
+    description: "List your property on HomeShare and start earning today.",
+  });
 };
 
 module.exports.showListing = async (req, res) => {
@@ -67,7 +85,16 @@ module.exports.showListing = async (req, res) => {
     req.flash("error", "Cannot find that listing!");
     res.redirect("/listings");
   }
-  res.render("listings/show.ejs", { listing });
+  res.render("listings/show.ejs", {
+    listing,
+    title: listing.title,
+    description: `${listing.title} in ${listing.location}, ${
+      listing.country
+    }. ${listing.price.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    })} per night.`,
+  });
 };
 
 module.exports.createListing = async (req, res, next) => {
@@ -105,7 +132,12 @@ module.exports.renderEditForm = async (req, res) => {
   let originalImageUrl = listing.image.url;
   originalImageUrl = originalImageUrl.replace("upload", "upload/w_250");
 
-  res.render("listings/edit.ejs", { listing, originalImageUrl });
+  res.render("listings/edit.ejs", {
+    listing,
+    originalImageUrl,
+    title: `Edit ${listing.title}`,
+    description: `Update your listing details for ${listing.title} in ${listing.location}.`,
+  });
 };
 
 module.exports.updateListing = async (req, res) => {

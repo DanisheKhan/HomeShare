@@ -3,6 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+      <%= title ? `${title} | HomeShare` : 'HomeShare - Find Your Perfect
+      Accommodation' %>
+    </title>
+
+    <!-- Primary Meta Tags -->
+    <meta
+      name="title"
+      content="<%= title ? `${title} | HomeShare` : 'HomeShare - Find Your Perfect Accommodation' %>"
+    />
+    <meta
+      name="description"
+      content="<%= description || 'Discover and share accommodations worldwide. Find rooms, apartments, and homes for your next stay or list your property.' %>"
+    />
+    <meta
+      name="keywords"
+      content="accommodation, room sharing, property rental, vacation homes, apartments, housing"
+    />
+    <meta name="author" content="Danish Khan" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com/" />
+    <meta
+      property="og:title"
+      content="<%= title ? `${title} | HomeShare` : 'HomeShare - Find Your Perfect Accommodation' %>"
+    />
+    <meta
+      property="og:description"
+      content="<%= description || 'Discover and share accommodations worldwide. Find rooms, apartments, and homes for your next stay.' %>"
+    />
+    <meta property="og:image" content="/Images/webLogo.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://yourdomain.com/" />
+    <meta
+      property="twitter:title"
+      content="<%= title ? `${title} | HomeShare` : 'HomeShare - Find Your Perfect Accommodation' %>"
+    />
+    <meta
+      property="twitter:description"
+      content="<%= description || 'Discover and share accommodations worldwide. Find rooms, apartments, and homes for your next stay.' %>"
+    />
+    <meta property="twitter:image" content="/Images/webLogo.png" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourdomain.com/" />
+    <link rel="icon" href="/ImageLogo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/Images/webLogo.png" type="image/x-icon" />
+    <link rel="icon" type="image/png" href="/Images/webLogo.png" />
+    <link rel="apple-touch-icon" href="/Images/webLogo.png" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/global.css" />
     <link rel="stylesheet" href="/css/navbar-enhance.css" />
@@ -21,13 +76,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-    <title>Danish Khan Web</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
       rel="stylesheet"
-    />    <link rel="stylesheet" href="/css/rating.css" />
+    />
+    <link rel="stylesheet" href="/css/rating.css" />
     <link rel="stylesheet" href="/css/card-components.css" />
     <link rel="stylesheet" href="/css/responsive-cards.css" />
     <link
@@ -43,7 +99,8 @@
       <%- include("../includes/flash.ejs") %> <%- body %>
     </div>
 
-    <%- include("../includes/footer.ejs") %>    <script
+    <%- include("../includes/footer.ejs") %>
+    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"

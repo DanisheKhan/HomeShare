@@ -1,8 +1,11 @@
 const User = require("../models/user");
 
-
 module.exports.renderSignupForm = (req, res) => {
-  res.render("users/signup.ejs");
+  res.render("users/signup.ejs", {
+    title: "Sign Up",
+    description:
+      "Create an account to list your property or book accommodations on HomeShare.",
+  });
 };
 
 module.exports.signup = async (req, res) => {
@@ -25,7 +28,11 @@ module.exports.signup = async (req, res) => {
 };
 
 module.exports.renderLoginForm = (req, res) => {
-  res.render("users/login.ejs");
+  res.render("users/login.ejs", {
+    title: "Log In",
+    description:
+      "Log in to your HomeShare account to access your bookings and listings.",
+  });
 };
 
 module.exports.login = async (req, res) => {
