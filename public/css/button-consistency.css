@@ -1,0 +1,69 @@
+/* Button Consistency Enhancement */
+
+/* Further refinements for navbar buttons */
+.navbar-nav .nav-item {
+  display: flex;
+}
+
+/* Button consistency across all states */
+.nav-btn {
+  /* Improved button sizing consistency */
+  box-sizing: border-box;
+  border-width: 1.5px;
+  border-style: solid;
+
+  /* Enhanced text positioning */
+  text-align: center;
+
+  /* Consistent transition effects */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ensure spacing is consistent between buttons */
+@media (min-width: 992px) {
+  .navbar-nav .nav-item {
+    margin: 0 0.25rem;
+  }
+}
+
+/* Better alignment for icons */
+.nav-btn i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Consistent padding across different browsers */
+.nav-btn.btn-primary,
+.nav-btn.btn-secondary,
+.nav-btn.btn-outline,
+.nav-btn.btn-accent,
+.nav-btn.btn-danger {
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+}
+
+/* Consistent active state */
+.nav-btn:active {
+  transform: translateY(0) scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+/* Make buttons more accessible with consistent focus states */
+.nav-btn:focus {
+  outline: none;
+}
+
+
+
+/* Enhanced mobile buttons */
+@media (max-width: 767.98px) {
+  .nav-btn.btn-primary,
+  .nav-btn.btn-secondary,
+  .nav-btn.btn-outline,
+  .nav-btn.btn-accent,
+  .nav-btn.btn-danger {
+    /* Equal padding on smaller screens */
+    padding: 0.8rem 1.375rem;
+  }
+}

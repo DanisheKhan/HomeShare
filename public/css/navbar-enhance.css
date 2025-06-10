@@ -1,0 +1,130 @@
+/* Additional Navbar Enhancements */
+
+/* Improved spacing consistency and transitions */
+.navbar {
+  transition: padding 0.2s ease-out, background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Enhanced Button Consistency */
+.nav-btn {
+  --btn-min-width: 100px; /* Ensures buttons have a minimum width */
+  min-width: var(--btn-min-width);
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 1.4;
+}
+
+.nav-btn i {
+  line-height: 1;
+  height: 1em;
+  vertical-align: middle;
+  margin-top: -2px;
+  display: inline-block;
+}
+
+/* Enhanced hover states - more consistent transitions */
+.nav-btn:hover {
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover i {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.navbar .container-fluid {
+  transition: padding 0.2s ease-out;
+}
+
+@media (max-width: 575.98px) {
+  .navbar .container-fluid {
+    padding-left: 0.875rem !important;
+    padding-right: 0.875rem !important;
+  }
+}
+
+@media (max-width: 374.98px) {
+  .navbar .container-fluid {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+/* Enhanced mobile menu animation */
+.navbar-collapse {
+  will-change: height;
+  transition: height 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .nav-btn:active {
+    transform: scale(0.98);
+    transition: transform 0.1s;
+  }
+
+  .search-btn:active {
+    transform: scale(0.95);
+    transition: transform 0.1s;
+  }
+}
+
+/* Enhanced Button Padding Consistency */
+@supports (-webkit-touch-callout: none) {
+  /* iOS-specific override to ensure consistent button size */
+  .nav-btn {
+    padding-top: calc(0.85rem + 1px);
+    padding-bottom: calc(0.85rem - 1px);
+  }
+}
+
+/* Force consistent button height in Firefox */
+@-moz-document url-prefix() {
+  .nav-btn {
+    height: 46px;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+}
+
+/* Refined spacing for vertical nav items */
+@media (max-width: 991.98px) {
+  .navbar-nav .nav-item + .nav-item {
+    margin-top: 0.625rem;
+  }
+
+  .search-input {
+    text-align: center;
+  }
+
+  /* More consistent button padding in mobile menu */
+  .nav-btn {
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Reduced motion preference support */
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .nav-btn,
+  .search-container,
+  .navbar-collapse,
+  .dropdown-menu {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .nav-btn::before {
+    display: none;
+  }
+}

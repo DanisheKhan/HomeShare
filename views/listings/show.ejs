@@ -217,30 +217,21 @@
     display: flex;
     gap: 1rem;
   }
-
-  /* Booking Widget */
-  .booking-widget {
-    position: sticky;
-    top: 2rem;
-    background-color: white;
+  /* Booking Information (Inline) */
+  .booking-info-inline {
+    background-color: #f8f9fa;
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-md);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
-    transition: all 0.3s ease;
   }
 
-  .booking-widget:hover {
-    box-shadow: var(--shadow-lg);
+  .price-info {
+    font-size: 1.25rem;
   }
 
-  .booking-header {
+  .rating-info {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.25rem;
-    flex-wrap: wrap;
     gap: 0.5rem;
   }
 
@@ -484,20 +475,14 @@
     text-align: center;
     margin-top: 2rem;
   }
-
-  /* Things To Know Section */
-  .things-to-know {
-    background-color: white;
+  /* Things To Know Section (Inline) */
+  .things-to-know-inline {
+    background-color: #f8f9fa;
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
     padding: 1.5rem;
-    margin-top: 2rem;
-    position: sticky;
-    top: 2rem;
   }
 
-  .things-to-know h3 {
+  .things-to-know-inline h3 {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
@@ -527,8 +512,7 @@
     margin-bottom: 0.5rem;
     color: var(--text-muted);
     font-size: 0.95rem;
-  }
-  /* Enhanced Media Queries */
+  } /* Enhanced Media Queries */
   @media screen and (min-width: 1400px) {
     .main-image {
       height: 550px;
@@ -537,19 +521,11 @@
     .listing-title {
       font-size: 2rem;
     }
-
-    .amenities-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
   }
 
   @media screen and (min-width: 1200px) and (max-width: 1399.98px) {
     .main-image {
       height: 500px;
-    }
-
-    .amenities-grid {
-      grid-template-columns: repeat(3, 1fr);
     }
   }
 
@@ -563,22 +539,10 @@
       gap: 1rem;
     }
   }
-
   @media screen and (max-width: 992px) {
-    .booking-widget {
-      position: static;
-      margin-top: 2rem;
-      max-width: 450px;
-    }
-
-    .things-to-know {
-      position: static;
-      max-width: 450px;
-      margin: 0 auto;
-    }
-
-    .amenities-grid {
-      grid-template-columns: repeat(2, 1fr);
+    .booking-info-inline,
+    .things-to-know-inline {
+      padding: 1.25rem;
     }
   }
 
@@ -735,8 +699,8 @@
   <section class="listing-info">
     <div class="container">
       <div class="row">
-        <!-- Left Column - Main Content -->
-        <div class="col-lg-8">
+        <!-- Main Content - Full Width -->
+        <div class="col-12">
           <div class="listing-header">
             <h1 class="listing-title"><%= listing.title %></h1>
             <div class="listing-subheader">
@@ -832,9 +796,42 @@
             </div>
           </div>
           <% } %>
-        </div>
 
-        <!-- Right Column - Booking Widget -->
+          <!-- Things to Know (Inline) -->
+          <div class="things-to-know-inline mb-5">
+            <h3 class="mb-4">Things to know</h3>
+            <div class="row">
+              <div class="col-md-4 mb-4 mb-md-0">
+                <h4>House rules</h4>
+                <ul class="info-list">
+                  <li>Check-in: After 2:00 PM</li>
+                  <li>Checkout: 11:00 AM</li>
+                  <li>No smoking</li>
+                  <li>No pets</li>
+                </ul>
+              </div>
+              <div class="col-md-4 mb-4 mb-md-0">
+                <h4>Safety & property</h4>
+                <ul class="info-list">
+                  <li>Carbon monoxide alarm</li>
+                  <li>Smoke alarm</li>
+                  <li>Security cameras on property</li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <h4>Cancellation policy</h4>
+                <ul class="info-list">
+                  <li>
+                    Free cancellation before <%= new Date(Date.now() +
+                    604800000).toLocaleDateString('en-US', { month: 'short',
+                    day: 'numeric' }) %>
+                  </li>
+                  <li>Review the host's full cancellation policy</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -842,7 +839,7 @@
   <section class="listing-details">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-12">
           <!-- Map Section -->
           <div class="listing-map">
             <h2>Where you'll be</h2>
@@ -985,8 +982,6 @@
             <% } %>
           </div>
         </div>
-
-        
       </div>
     </div>
   </section>

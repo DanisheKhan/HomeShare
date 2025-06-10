@@ -85,12 +85,7 @@ html {
 }
 
 /* Enhanced focus states for accessibility */
-.nav-btn:focus-visible,
-.search-btn:focus-visible,
-.search-input:focus-visible {
-  outline: 3px solid rgba(255, 56, 92, 0.5);
-  outline-offset: 2px;
-}
+
 
 /* Navbar spacing improvements */
 .navbar .container-fluid {
