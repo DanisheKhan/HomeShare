@@ -54,15 +54,19 @@
             </button>
           </div>
         </form>
-      </div>
-
-      <!-- Right Navigation -->
+      </div>      <!-- Right Navigation -->
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
+          <% if (typeof currUser !== 'undefined' && currUser !== null) { %>
           <a class="nav-link nav-btn btn-secondary" href="/listings/new">
             <i class="fas fa-home"></i>
             <span>Host Your Home</span>
           </a>
+          <% } else { %>          <a class="nav-link nav-btn btn-secondary host-link" href="/login" onclick="event.preventDefault(); showLoginMessage('Please login first to host your home. Once logged in, you will be able to create your listing.'); return false;" title="Login required to host" data-bs-toggle="tooltip" data-bs-placement="bottom">
+            <i class="fas fa-home"></i>
+            <span>Host Your Home</span>
+          </a>
+          <% } %>
         </li>
         
         <% if (typeof currUser === 'undefined' || currUser === null) { %>
@@ -612,7 +616,55 @@
 </style>
 </style>
 
-<script>
+<script>  // Function to show login message and redirect to login page  function showLoginMessage(message) {
+    // Use the flash message system from Express
+    // Store the message in session storage so it persists during the redirect
+    sessionStorage.setItem('loginRedirectReason', message);
+    // Redirect to login page
+    window.location.href = "/login";
+  }
+  
+  // Initialize tooltips when DOM is loaded
+  document.addEventListener("DOMContentLoaded", function() {
+    // Add tooltip to host links that require login
+    const hostLinks = document.querySelectorAll('.host-link');
+    hostLinks.forEach(link => {
+      // Add a subtle visual indicator if not already present
+      if (!link.querySelector('.fa-lock')) {
+        const span = link.querySelector('span');
+        if (span) {
+          span.innerHTML = span.innerHTML + ' <i class="fas fa-lock fa-xs ms-1" style="opacity: 0.7;"></i>';
+        }
+      }
+    });
+    
+    // Initialize tooltips if Bootstrap is available
+    if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
+      const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      tooltips.forEach(tooltip => new bootstrap.Tooltip(tooltip));
+    }
+  });
+    // Initialize tooltips when DOM is loaded
+  document.addEventListener("DOMContentLoaded", function() {
+    // Add tooltip to host links that require login
+    const hostLinks = document.querySelectorAll('.host-link');
+    hostLinks.forEach(link => {
+      // Add a subtle visual indicator if not already present
+      if (!link.querySelector('.fa-lock')) {
+        const span = link.querySelector('span');
+        if (span) {
+          span.innerHTML = span.innerHTML + ' <i class="fas fa-lock fa-xs ms-1" style="opacity: 0.7;"></i>';
+        }
+      }
+    });
+    
+    // Initialize tooltips if Bootstrap is available
+    if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
+      const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      tooltips.forEach(tooltip => new bootstrap.Tooltip(tooltip));
+    }
+  });
+
   class NavbarController {
     constructor() {
       this.navbar = document.querySelector('.navbar');

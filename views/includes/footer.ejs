@@ -152,9 +152,19 @@
               <nav aria-label="Footer navigation - Hosting">
                 <ul class="footer-links">
                   <li>
+                    <% if (typeof currUser !== 'undefined' && currUser !== null)
+                    { %>
                     <a href="/listings/new" class="footer-link"
                       >Host Your Home</a
                     >
+                    <% } else { %>
+                    <a
+                      href="#"
+                      class="footer-link host-link"
+                      onclick="event.preventDefault(); showLoginMessage('Please login first to host your home. Once logged in, you will be able to create your listing.'); return false;"
+                      >Host Your Home</a
+                    >
+                    <% } %>
                   </li>
                   <li><a href="#" class="footer-link">Host Resources</a></li>
                   <li><a href="#" class="footer-link">Safety Guidelines</a></li>
@@ -818,6 +828,34 @@
 </style>
 
 <script>
+  // If this was not defined in navbar.ejs, define it here (it's a global function)
+  if (typeof showLoginMessage === "undefined") {
+    function showLoginMessage(message) {
+      sessionStorage.setItem("loginRedirectReason", message);
+      window.location.href = "/login";
+    }
+  }
+
+  // Add tooltip to host links that require login
+  document.addEventListener("DOMContentLoaded", function () {
+    const hostLinks = document.querySelectorAll(".host-link");
+    hostLinks.forEach((link) => {
+      link.setAttribute("title", "Login required to host");
+      link.setAttribute("data-bs-toggle", "tooltip");
+      link.setAttribute("data-bs-placement", "top");
+
+      // Add a subtle visual indicator
+      link.innerHTML +=
+        ' <i class="fas fa-lock fa-xs ms-1" style="opacity: 0.7;"></i>';
+    });
+
+    // Initialize tooltips if Bootstrap is available
+    if (typeof bootstrap !== "undefined" && bootstrap.Tooltip) {
+      const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      tooltips.forEach((tooltip) => new bootstrap.Tooltip(tooltip));
+    }
+  });
+
   /**
    * Enhanced Professional Footer Controller
    * Handles newsletter signup, social links tracking, and interactive animations

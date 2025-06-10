@@ -216,7 +216,6 @@
       this.classList.toggle("fa-eye");
       this.classList.toggle("fa-eye-slash");
     });
-
   // Form validation
   (function () {
     "use strict";
@@ -233,6 +232,66 @@
         },
         false
       );
-    });
+    }); // Check if there's a login redirect reason in session storage
+    const loginRedirectReason = sessionStorage.getItem("loginRedirectReason");
+    if (loginRedirectReason) {
+      // Create enhanced flash message element
+      const flashContainer = document.querySelector(".flash-container");
+      if (flashContainer) {
+        const alertDiv = document.createElement("div");
+        alertDiv.className =
+          "custom-alert info-alert alert-dismissible fade show animate__animated animate__fadeInDown animate__faster";
+        alertDiv.role = "alert";
+        alertDiv.innerHTML = `
+          <div class="alert-content">
+            <div class="alert-icon-wrapper">
+              <i class="fas fa-info-circle alert-icon"></i>
+            </div>
+            <div class="alert-message">
+              <strong>Action Required:</strong> ${loginRedirectReason}
+            </div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        `;
+        flashContainer.appendChild(alertDiv);
+
+        // Add special styling for the login message
+        const style = document.createElement("style");
+        style.textContent = `
+          .info-alert {
+            background-color: #e7f2fa;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+          }
+          .info-alert .alert-icon-wrapper {
+            background-color: #3498db;
+          }
+          .info-alert .alert-icon {
+            color: white;
+          }
+          .info-alert .alert-message {
+            color: #2c3e50;
+          }
+          .info-alert .alert-message strong {
+            color: #3498db;
+          }
+        `;
+        document.head.appendChild(style);
+
+        // Auto dismiss after 7 seconds
+        setTimeout(() => {
+          alertDiv.classList.replace(
+            "animate__fadeInDown",
+            "animate__fadeOutUp"
+          );
+          setTimeout(() => {
+            alertDiv.remove();
+          }, 500);
+        }, 7000);
+      }
+
+      // Remove the message from session storage so it doesn't show again on refresh
+      sessionStorage.removeItem("loginRedirectReason");
+    }
   })();
 </script>
