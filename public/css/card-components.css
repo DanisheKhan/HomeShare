@@ -1,0 +1,164 @@
+/* Base Card Components Styling */
+
+/* Card Container */
+.listing-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Card Image Container */
+.card-img-container {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* Card Image Styling */
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+/* Card Badge (Location) */
+.card-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+/* Card Body */
+.card-body {
+  padding: 1.25rem !important;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card Title */
+.card-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  color: var(--text-dark);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Card Text (Description) */
+.card-text {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Card Meta (Ratings & Reviews) */
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Rating Star */
+.rating {
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+
+.rating i {
+  color: var(--primary-color);
+  margin-right: 0.25rem;
+}
+
+/* Reviews Count */
+.reviews {
+  color: var(--text-muted);
+}
+
+/* Property Type */
+.property-type {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.property-type i {
+  color: var(--text-secondary);
+  font-size: 0.85em;
+  margin-right: 0.25rem;
+}
+
+/* Card Price */
+.card-price {
+  margin-top: auto;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.price-amount {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text-dark);
+}
+
+/* Tax Info Badge */
+.tax-info {
+  font-weight: normal;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+
+/* Listing Link (Full Card Clickable) */
+.listing-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Card Grid Layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}

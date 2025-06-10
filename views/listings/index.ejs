@@ -301,8 +301,7 @@
   <% } else { %>
   <div class="container-fluid px-0">
     <div class="card-grid">
-      <% for (let listing of allListings) { %>
-      <div class="card listing-card card-hover-effect">
+      <% for (let listing of allListings) { %>      <div class="card listing-card card-hover-effect">
         <a href="/listings/<%= listing._id %>" class="listing-link">
           <div class="card-img-container card-img-animation">
             <img
@@ -310,10 +309,11 @@
               class="card-img-top"
               alt="<%= listing.title %>"
               loading="lazy"
+              data-mobile-src="<%= listing.image.url %>"
+              data-desktop-src="<%= listing.image.url %>"
             />
             <div class="card-badge">
-              <i class="fa-solid fa-location-dot me-1"></i><%= listing.location
-              %>
+              <i class="fa-solid fa-location-dot me-1"></i><%= listing.location %>
             </div>
           </div>
           <div class="card-body">
@@ -326,15 +326,14 @@
                 </span>
                 <span class="reviews">(42 reviews)</span>
               </div>
+              <div class="property-type">
+                <i class="fa-solid fa-home me-1"></i>Entire Place
+              </div>
             </div>
             <p class="card-price">
-              <span class="price-amount"
-                >₹<%= listing.price.toLocaleString("en-IN") %></span
-              >
+              <span class="price-amount">₹<%= listing.price.toLocaleString("en-IN") %></span>
               / night
-              <span class="tax-info badge rounded-pill text-bg-light"
-                >+ 18% tax</span
-              >
+              <span class="tax-info badge rounded-pill text-bg-light">+ 18% tax</span>
             </p>
           </div>
         </a>

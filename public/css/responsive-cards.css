@@ -1,93 +1,111 @@
 /* Responsive Cards CSS */
 
-/* Card hover animation */
+/* Card hover animation - smoother and more subtle */
 .card-hover-effect {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1), 
+              box-shadow 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.card-hover-effect:hover {
+.card-hover-effect:hover,
+.card-hover-effect.is-hovered {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
-/* Card image animation */
+/* Card image animation - smoother animation */
 .card-img-animation {
   overflow: hidden;
 }
 
 .card-img-animation img {
-  transition: transform 0.5s ease;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .card-img-animation:hover img {
   transform: scale(1.05);
 }
 
-/* Touch device optimizations */
+/* Touch device optimizations with improved interactions */
 @media (hover: none) {
   .card-hover-effect:hover {
     transform: none;
+    box-shadow: var(--shadow-sm);
   }
 
   .card-img-animation:hover img {
     transform: none;
   }
 
-  /* Apply a subtle tap effect instead */
+  /* Apply a more refined tap effect */
   .card-hover-effect:active {
-    transform: scale(0.98);
+    transform: scale(0.985);
+    box-shadow: var(--shadow-xs);
   }
 }
 
 /* Extra small devices (phones, less than 576px) */
 @media (max-width: 575.98px) {
   .card-title {
-    font-size: 0.95rem;
-    margin-bottom: 0.4rem;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
     line-height: 1.3;
+    -webkit-line-clamp: 1;
   }
-
   .card-text {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     -webkit-line-clamp: 2;
     line-clamp: 2;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
     line-height: 1.4;
+    max-height: calc(1.4em * 2);
   }
 
   .card-body {
-    padding: 0.75rem !important;
+    padding: 0.875rem !important;
   }
 
   .card-badge {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.4rem;
-    top: 6px;
-    left: 6px;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.45rem;
+    top: 8px;
+    left: 8px;
   }
-
   .card-meta {
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+  }
+  
+  .property-type {
     font-size: 0.75rem;
-    margin: 0.4rem 0;
   }
 
   .card-price {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 
   .price-amount {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
-
-
 
   /* Optimize for touch interactions */
   .listing-card {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
+    border-radius: var(--radius-md);
   }
+  
+  .card-img-container {
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+  
   .tax-info {
     font-size: 0.7rem;
     padding: 0.15rem 0.4rem;
+  }
+  
+  /* Card grid adjustments */
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
   }
 
   /* Performance optimizations for mobile */
@@ -99,26 +117,40 @@
     will-change: transform;
     backface-visibility: hidden;
     perspective: 1000px;
-  }
-  /* Reduce animations on slower devices */
+  }  /* Reduce animations on slower devices and respect user preference */
   @media (prefers-reduced-motion: reduce) {
     .listing-card,
     .card-img-animation img {
-      transition: none;
+      transition: none !important;
     }
 
-    .listing-card:hover {
-      transform: none;
+    .listing-card:hover,
+    .card-hover-effect:hover {
+      transform: none !important;
+      box-shadow: var(--shadow-sm) !important;
     }
 
     .card-img-animation:hover img {
-      transform: none;
+      transform: none !important;
     }
   }
-  /* Improve touch target sizes */
+  
+  /* Improve touch target sizes for better accessibility */
   .listing-link {
     min-height: 44px;
     display: block;
+    position: relative;
+  }
+  
+  /* Increase touch target size for all interactive elements */
+  .listing-link::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
   }
 }
 
@@ -126,6 +158,7 @@
 @media (min-width: 576px) and (max-width: 767.98px) {
   .card-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.25rem;
   }
 
   .card-img-container {
@@ -138,35 +171,81 @@
 
   .card-title {
     font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-text {
+    font-size: 0.875rem;
+    margin-bottom: 0.6rem;
   }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
   .card-grid {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1.25rem;
+  }
+  
+  .card-body {
+    padding: 1.1rem !important;
+  }
+  
+  .card-title {
+    font-size: 1.05rem;
+  }
+  
+  .card-text {
+    margin-bottom: 0.7rem;
+  }
+  
+  .card-img-container {
+    aspect-ratio: 3/2;
   }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .card-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .card-body {
+    padding: 1.2rem !important;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+  }
+  
+  .card-img-container {
+    aspect-ratio: 4/3;
   }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
   .card-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.75rem;
   }
 
   .card-title {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
 
   .card-body {
     padding: 1.35rem !important;
+  }
+  
+  .card-text {
+    font-size: 0.925rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .card-meta {
+    margin: 0.6rem 0;
   }
 }
 
@@ -177,52 +256,73 @@
     width: 100%;
   }
 
-
+  .card-grid {
+    padding: 0 0.5rem;
+  }
 
   .listing-card {
     margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-width: 1px;
+  }
+  
+  /* Better card spacing for mobile */
+  .card + .card {
+    margin-top: 1.25rem;
   }
 }
 
-/* Additional mobile optimizations */
+/* Additional mobile optimizations for very small screens */
 @media (max-width: 375px) {
   .card-body {
-    padding: 0.625rem !important;
+    padding: 0.75rem !important;
   }
-
   .card-title {
-    font-size: 0.9rem;
-    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    max-height: 1.3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Fallback */
   }
 
   .card-text {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     -webkit-line-clamp: 1;
     line-clamp: 1;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
+    max-height: 1.4em;
   }
 
   .card-meta {
-    font-size: 0.7rem;
-    margin: 0.3rem 0;
-    flex-direction: column;
-    align-items: flex-start;
+    font-size: 0.75rem;
+    margin: 0.4rem 0;
+    flex-direction: row; /* Keep on one line for better alignment */
+    justify-content: space-between;
   }
 
   .card-badge {
-    font-size: 0.6rem;
-    padding: 0.1rem 0.3rem;
-    top: 4px;
-    left: 4px;
+    font-size: 0.65rem;
+    padding: 0.15rem 0.35rem;
+    top: 6px;
+    left: 6px;
   }
 
   .tax-info {
-    font-size: 0.6rem;
-    padding: 0.05rem 0.25rem;
+    font-size: 0.65rem;
+    padding: 0.1rem 0.3rem;
   }
 
   .card-img-container {
     aspect-ratio: 16/9;
+    height: auto;
+  }
+  
+  /* Optimize performance on small devices */
+  .card-hover-effect:hover {
+    transform: translateY(-3px);
   }
 }
 
@@ -234,5 +334,105 @@
 
   .card-img-top {
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  
+  /* Sharper text rendering for high-res displays */
+  .card-title, .card-text, .card-price, .card-meta {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Sharper shadows */
+  .card-hover-effect:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* Add smooth loading/fade-in animation for card images and card visibility */
+@keyframes cardImageFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-img-top {
+  animation: cardImageFadeIn 0.4s ease-out;
+}
+
+.listing-card {
+  opacity: 0;
+}
+
+.listing-card.card-visible {
+  animation: cardFadeIn 0.5s ease-out forwards;
+}
+
+/* Stagger card animations */
+.card-grid .listing-card:nth-child(1) { animation-delay: 0.05s; }
+.card-grid .listing-card:nth-child(2) { animation-delay: 0.1s; }
+.card-grid .listing-card:nth-child(3) { animation-delay: 0.15s; }
+.card-grid .listing-card:nth-child(4) { animation-delay: 0.2s; }
+.card-grid .listing-card:nth-child(5) { animation-delay: 0.25s; }
+.card-grid .listing-card:nth-child(n+6) { animation-delay: 0.3s; }
+
+/* Respect user's animation preferences */
+@media (prefers-reduced-motion) {
+  .listing-card,
+  .listing-card.card-visible {
+    animation: none !important;
+    opacity: 1;
+  }
+  
+  .card-grid .listing-card:nth-child(n) {
+    animation-delay: 0s;
+  }
+  
+  .card-img-top {
+    animation: none;
+  }
+}
+
+/* Add focus styles for accessibility */
+.listing-link:focus {
+  outline: none;
+}
+
+.listing-link:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Print styles for cards */
+@media print {
+  .card-grid {
+    display: block;
+  }
+  
+  .listing-card {
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+  }
+  
+  .card-hover-effect:hover {
+    transform: none;
+    box-shadow: none;
   }
 }
