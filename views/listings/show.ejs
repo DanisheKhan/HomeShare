@@ -726,9 +726,6 @@
       <div class="gallery-container">
         <div class="main-image">
           <img src="<%= listing.image.url %>" alt="<%= listing.title %>" />
-          <button class="gallery-action-btn">
-            <i class="fa-regular fa-images me-2"></i> View all photos
-          </button>
         </div>
       </div>
     </div>
@@ -753,14 +750,6 @@
                   listing.location %>, <%= listing.country %>
                 </span>
               </div>
-              <div class="listing-actions">
-                <button class="btn btn-sm btn-outline-dark action-btn">
-                  <i class="fa-regular fa-share-from-square me-1"></i> Share
-                </button>
-                <button class="btn btn-sm btn-outline-dark action-btn">
-                  <i class="fa-regular fa-heart me-1"></i> Save
-                </button>
-              </div>
             </div>
           </div>
 
@@ -769,9 +758,6 @@
               <p class="host-label">
                 Entire home hosted by
                 <span class="host-name"><%= listing.owner.username %></span>
-              </p>
-              <p class="host-details">
-                4 guests · 2 bedrooms · 2 beds · 1 bath
               </p>
             </div>
             <div class="host-avatar">
@@ -820,7 +806,6 @@
             <div class="description-text">
               <p><%= listing.description %></p>
             </div>
-            <button class="btn btn-link read-more-btn p-0">Read more</button>
           </div>
 
           <hr class="divider" />
@@ -850,76 +835,6 @@
         </div>
 
         <!-- Right Column - Booking Widget -->
-        <div class="col-lg-4">
-          <div class="booking-widget">
-            <div class="booking-header">
-              <div class="price-info">
-                <span class="price"
-                  >₹<%= listing.price.toLocaleString("en-IN") %></span
-                >
-                night
-              </div>
-              <div class="rating-info">
-                <i class="fa-solid fa-star"></i> 4.85 ·
-                <span class="reviews-count">42 reviews</span>
-              </div>
-            </div>
-            <form class="booking-form">
-              <div class="booking-dates">
-                <div class="checkin">
-                  <label>CHECK-IN</label>
-                  <input type="date" class="form-control" required />
-                </div>
-                <div class="checkout">
-                  <label>CHECKOUT</label>
-                  <input type="date" class="form-control" required />
-                </div>
-              </div>
-
-              <div class="booking-guests">
-                <label>GUESTS</label>
-                <select class="form-select">
-                  <option>1 guest</option>
-                  <option>2 guests</option>
-                  <option selected>3 guests</option>
-                  <option>4 guests</option>
-                </select>
-              </div>
-
-              <button type="button" class="btn btn-primary booking-btn w-100">
-                Reserve
-              </button>
-              <p class="booking-note text-center">You won't be charged yet</p>
-
-              <div class="booking-breakdown">
-                <div class="breakdown-item">
-                  <span
-                    >₹<%= listing.price.toLocaleString("en-IN") %> x 5
-                    nights</span
-                  >
-                  <span
-                    >₹<%= (listing.price * 5).toLocaleString("en-IN") %></span
-                  >
-                </div>
-                <div class="breakdown-item">
-                  <span>Cleaning fee</span>
-                  <span>₹1,500</span>
-                </div>
-                <div class="breakdown-item">
-                  <span>Service fee</span>
-                  <span>₹2,500</span>
-                </div>
-                <div class="breakdown-item total">
-                  <span>Total</span>
-                  <span
-                    >₹<%= (listing.price * 5 + 1500 +
-                    2500).toLocaleString("en-IN") %></span
-                  >
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -944,73 +859,6 @@
 
           <!-- Reviews Section -->
           <div class="listing-reviews">
-            <div class="reviews-header">
-              <h2>
-                <i class="fa-solid fa-star"></i> 4.85 · <%=
-                listing.reviews.length %> reviews
-              </h2>
-              <div class="reviews-summary">
-                <div class="rating-bars">
-                  <div class="rating-bar-item">
-                    <span class="rating-label">Cleanliness</span>
-                    <div class="progress">
-                      <div
-                        class="progress-bar"
-                        role="progressbar"
-                        style="width: 95%"
-                        aria-valuenow="95"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <span class="rating-value">4.9</span>
-                  </div>
-                  <div class="rating-bar-item">
-                    <span class="rating-label">Communication</span>
-                    <div class="progress">
-                      <div
-                        class="progress-bar"
-                        role="progressbar"
-                        style="width: 90%"
-                        aria-valuenow="90"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <span class="rating-value">4.8</span>
-                  </div>
-                  <div class="rating-bar-item">
-                    <span class="rating-label">Check-in</span>
-                    <div class="progress">
-                      <div
-                        class="progress-bar"
-                        role="progressbar"
-                        style="width: 98%"
-                        aria-valuenow="98"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <span class="rating-value">5.0</span>
-                  </div>
-                  <div class="rating-bar-item">
-                    <span class="rating-label">Value</span>
-                    <div class="progress">
-                      <div
-                        class="progress-bar"
-                        role="progressbar"
-                        style="width: 85%"
-                        aria-valuenow="85"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                    <span class="rating-value">4.7</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <% if(listing.reviews.length > 0) { %>
             <div class="reviews-list">
               <% for(let review of listing.reviews) { %>
@@ -1046,9 +894,7 @@
               </div>
               <% } %>
             </div>
-            <button class="btn btn-outline-dark show-all-reviews">
-              Show all <%= listing.reviews.length %> reviews
-            </button>
+
             <% } %> <% if(currUser) { %>
             <div class="add-review">
               <h3>Leave a review</h3>
@@ -1140,48 +986,7 @@
           </div>
         </div>
 
-        <div class="col-lg-4">
-          <!-- Things to know section -->
-          <div class="things-to-know">
-            <h3>Things to know</h3>
-
-            <div class="info-group">
-              <h4>House rules</h4>
-              <ul class="info-list">
-                <li>
-                  <i class="fa-solid fa-clock me-2"></i> Check-in: 2:00 PM -
-                  8:00 PM
-                </li>
-                <li>
-                  <i class="fa-solid fa-clock me-2"></i> Checkout: 10:00 AM
-                </li>
-                <li><i class="fa-solid fa-ban-smoking me-2"></i> No smoking</li>
-                <li><i class="fa-solid fa-paw me-2"></i> No pets</li>
-              </ul>
-            </div>
-
-            <div class="info-group">
-              <h4>Health & safety</h4>
-              <ul class="info-list">
-                <li>
-                  <i class="fa-solid fa-shield-virus me-2"></i> Enhanced
-                  cleaning protocol
-                </li>
-                <li>
-                  <i class="fa-solid fa-hand-sparkles me-2"></i> Sanitizer
-                  available
-                </li>
-                <li><i class="fa-solid fa-house-fire me-2"></i> Smoke alarm</li>
-              </ul>
-            </div>
-
-            <div class="info-group">
-              <h4>Cancellation policy</h4>
-              <p>Free cancellation for 48 hours</p>
-              <p>Review the host's full cancellation policy</p>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
   </section>
