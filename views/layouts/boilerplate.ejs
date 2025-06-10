@@ -8,12 +8,25 @@
       content="accommodation, room sharing, property rental, vacation homes, apartments, housing"
     />
     <meta name="author" content="Danish Khan" />
+
+    <meta
+      name="title"
+      content="<%= typeof title !== 'undefined' ? `${title} | HomeShare` : 'HomeShare' %>"
+    />
+    <meta
+      name="description"
+      content="<%= typeof description !== 'undefined' ? description : 'Discover and share accommodations worldwide. Find rooms, apartments, and homes for your next stay.' %>"
+    />
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://yourdomain.com/" />
     <meta
+      property="og:title"
+      content="<%= typeof title !== 'undefined' ? `${title} | HomeShare` : 'HomeShare' %>"
+    />
+    <meta
       property="og:description"
-      content="Discover and share accommodations worldwide. Find rooms, apartments, and homes for your next stay."
+      content="<%= typeof description !== 'undefined' ? description : 'Discover and share accommodations worldwide. Find rooms, apartments, and homes for your next stay.' %>"
     />
     <meta property="og:image" content="/Images/webLogo.png" />
 
@@ -58,7 +71,9 @@
       rel="stylesheet"
     />
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.js"></script>
-    <title>HomeShare</title>
+    <title>
+      <%= typeof title !== 'undefined' ? `${title} | HomeShare` : 'HomeShare' %>
+    </title>
   </head>
 
   <body>
