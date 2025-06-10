@@ -1,172 +1,265 @@
-<!-- Modern Footer Section -->
-<footer class="modern-footer">
+<!-- Professional Footer Section -->
+<footer class="modern-footer" id="page-footer">
+  <!-- Newsletter Section -->
+  <section class="newsletter-section py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="newsletter-content">
+            <h2 class="newsletter-title">Get inspired for your next trip</h2>
+            <p class="newsletter-description">
+              Sign up for our newsletter to receive travel tips, exclusive
+              deals, and curated home recommendations.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <form
+            class="newsletter-form"
+            aria-label="Newsletter subscription form"
+          >
+            <div class="newsletter-input-group">
+              <input
+                type="email"
+                class="newsletter-input"
+                placeholder="Enter your email"
+                aria-label="Email address"
+                required
+              />
+              <button
+                type="submit"
+                class="newsletter-btn"
+                aria-label="Subscribe"
+              >
+                <i class="fas fa-paper-plane"></i>
+                <span>Subscribe</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="footer-content">
     <div class="container">
       <!-- Main Footer Content -->
       <div class="footer-main">
         <div class="row">
           <!-- Brand Section -->
-          <div class="col-lg-4 col-md-6 mb-4">
+          <div class="col-lg-4 col-md-6 mb-5">
             <div class="footer-brand-section">
-              <a href="/listings" class="footer-brand">
-                <i class="fa-regular fa-compass brand-icon"></i>
+              <a
+                href="/listings"
+                class="footer-brand"
+                aria-label="HomeShare Homepage"
+              >
+                <i
+                  class="fa-regular fa-compass brand-icon"
+                  aria-hidden="true"
+                ></i>
                 <span class="brand-text">HomeShare</span>
               </a>
               <p class="brand-description">
                 Discover unique homes and experiences around the world. Book
                 unforgettable accommodations with trusted hosts.
               </p>
-              <div class="footer-social">
-                <a
-                  href="https://github.com/DanisheKhan"
-                  class="social-link github"
-                  aria-label="GitHub"
-                  target="_blank"
-                >
-                  <i class="fab fa-github"></i>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/danishkhan-jsx/"
-                  class="social-link linkedin"
-                  aria-label="LinkedIn"
-                  target="_blank"
-                >
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a
-                  href="https://github.com/DanisheKhan"
-                  class="social-link instagram"
-                  aria-label="Instagram"
-                  target="_blank"
-                >
-                  <i class="fab fa-instagram"></i>
-                </a>
-                <a
-                  href="https://wa.me/9322990946"
-                  class="social-link whatsapp"
-                  aria-label="WhatsApp"
-                  target="_blank"
-                >
-                  <i class="fab fa-whatsapp"></i>
-                </a>
+              <div class="footer-social" aria-labelledby="social-heading">
+                <h3 id="social-heading" class="social-heading">
+                  Connect with us
+                </h3>
+                <div class="social-links-wrapper">
+                  <a
+                    href="https://github.com/DanisheKhan"
+                    class="social-link github"
+                    aria-label="Follow us on GitHub"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <span class="sr-only">GitHub</span>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/danishkhan-jsx/"
+                    class="social-link linkedin"
+                    aria-label="Connect on LinkedIn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                    <span class="sr-only">LinkedIn</span>
+                  </a>
+                  <a
+                    href="https://instagram.com/danishekhan.jsx"
+                    class="social-link instagram"
+                    aria-label="Follow us on Instagram"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                    <span class="sr-only">Instagram</span>
+                  </a>
+                  <a
+                    href="https://wa.me/9322990946"
+                    class="social-link whatsapp"
+                    aria-label="Contact us on WhatsApp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    <span class="sr-only">WhatsApp</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-
-          <!-- Quick Links -->
-          <div class="col-lg-2 col-md-6 mb-4">
+          <!-- Footer Navigation Columns -->
+          <div class="col-lg-2 col-md-6 mb-5">
             <div class="footer-links-section">
-              <h4 class="">Explore</h4>
-              <ul class="footer-links">
-                <li><a href="/listings">All Homes</a></li>
-                <li><a href="/listings?category=apartment">Apartments</a></li>
-                <li><a href="/listings?category=house">Houses</a></li>
-                <li><a href="/listings?category=villa">Villas</a></li>
-                <li><a href="/listings?category=cabin">Cabins</a></li>
-              </ul>
+              <h4 class="footer-heading">Explore</h4>
+              <nav aria-label="Footer navigation - Explore">
+                <ul class="footer-links">
+                  <li><a href="/listings" class="footer-link">All Homes</a></li>
+                  <li>
+                    <a href="/listings?category=apartment" class="footer-link"
+                      >Apartments</a
+                    >
+                  </li>
+                  <li>
+                    <a href="/listings?category=house" class="footer-link"
+                      >Houses</a
+                    >
+                  </li>
+                  <li>
+                    <a href="/listings?category=villa" class="footer-link"
+                      >Villas</a
+                    >
+                  </li>
+                  <li>
+                    <a href="/listings?category=cabin" class="footer-link"
+                      >Cabins</a
+                    >
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
 
           <!-- Host Links -->
-          <div class="col-lg-2 col-md-6 mb-4">
+          <div class="col-lg-2 col-md-6 mb-5">
             <div class="footer-links-section">
-              <h4 class="">Hosting</h4>
-              <ul class="footer-links">
-                <li><a href="/listings/new">Host Your Home</a></li>
-                <li><a href="#">Host Resources</a></li>
-                <li><a href="#">Safety Guidelines</a></li>
-                <li><a href="#">Host Community</a></li>
-                <li><a href="#">Insurance</a></li>
-              </ul>
+              <h4 class="footer-heading">Hosting</h4>
+              <nav aria-label="Footer navigation - Hosting">
+                <ul class="footer-links">
+                  <li>
+                    <a href="/listings/new" class="footer-link"
+                      >Host Your Home</a
+                    >
+                  </li>
+                  <li><a href="#" class="footer-link">Host Resources</a></li>
+                  <li><a href="#" class="footer-link">Safety Guidelines</a></li>
+                  <li><a href="#" class="footer-link">Host Community</a></li>
+                  <li><a href="#" class="footer-link">Insurance</a></li>
+                </ul>
+              </nav>
             </div>
           </div>
 
           <!-- Support Links -->
-          <div class="col-lg-2 col-md-6 mb-4">
+          <div class="col-lg-2 col-md-6 mb-5">
             <div class="footer-links-section">
-              <h4 class="">Support</h4>
-              <ul class="footer-links">
-                <li><a href="#">Help Center</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Safety Center</a></li>
-                <li><a href="#">Cancellation Options</a></li>
-                <li><a href="#">Report a Problem</a></li>
-              </ul>
+              <h4 class="footer-heading">Support</h4>
+              <nav aria-label="Footer navigation - Support">
+                <ul class="footer-links">
+                  <li><a href="#" class="footer-link">Help Center</a></li>
+                  <li><a href="#" class="footer-link">Contact Us</a></li>
+                  <li><a href="#" class="footer-link">Safety Center</a></li>
+                  <li>
+                    <a href="#" class="footer-link">Cancellation Policy</a>
+                  </li>
+                  <li><a href="#" class="footer-link">Report an Issue</a></li>
+                </ul>
+              </nav>
             </div>
           </div>
 
           <!-- Company Links -->
-          <div class="col-lg-2 col-md-6 mb-4">
+          <div class="col-lg-2 col-md-6 mb-5">
             <div class="footer-links-section">
-              <h4 class="">Company</h4>
-              <ul class="footer-links">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Press</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Investors</a></li>
-              </ul>
+              <h4 class="footer-heading">Company</h4>
+              <nav aria-label="Footer navigation - Company">
+                <ul class="footer-links">
+                  <li><a href="#" class="footer-link">About Us</a></li>
+                  <li><a href="#" class="footer-link">Careers</a></li>
+                  <li><a href="#" class="footer-link">Press</a></li>
+                  <li><a href="#" class="footer-link">Blog</a></li>
+                  <li><a href="#" class="footer-link">Investors</a></li>
+                </ul>
+              </nav>
             </div>
           </div>
-          <div class="">
-            <div class="row justify-content-center">
-              <div class="col-md-12">
-                <div class="footer-legal">
-                  <p>&copy; 2025 HomeShare, Inc. All rights reserved.</p>
-                  <div class="legal-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
-                  </div>
-                </div>
+        </div>
+      </div>
+      <!-- Footer Bottom / Legal Section -->
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row justify-content-between align-items-center">
+            <div class="col-md-5">
+              <div class="footer-legal">
+                <p class="copyright">
+                  &copy; 2025 HomeShare, Inc. All rights reserved.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="legal-links">
+                <a href="#" class="legal-link">Privacy Policy</a>
+                <a href="#" class="legal-link">Terms of Service</a>
+                <a href="#" class="legal-link">Cookie Policy</a>
+                <a href="#" class="legal-link">Accessibility</a>
+                <a href="#" class="legal-link">Sitemap</a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Footer Bottom -->
     </div>
   </div>
 </footer>
 
 <style>
-  /* Modern Footer Styles - Consistent with Design System */
+  /* Professional Footer Styles - Refined Design System */
+  :root {
+    --footer-text-color: #374151;
+    --footer-text-muted: #6b7280;
+    --footer-bg-color: #ffffff;
+    --footer-border-color: rgba(0, 0, 0, 0.05);
+    --footer-hover-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Base footer styles */
   .modern-footer {
-    background: var(--background-color, #fff);
+    background: var(--footer-bg-color, #fff);
     position: relative;
     overflow: hidden;
     font-family: "Plus Jakarta Sans", sans-serif;
+    color: var(--footer-text-color);
+    border-top: 1px solid var(--footer-border-color);
+    padding-top: 2.5rem;
   }
 
-  .modern-footer::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--primary-light, rgba(255, 56, 92, 0.3)),
-      transparent
-    );
-  }
-
-  .footer-content {
-    position: relative;
-    z-index: 2;
-  }
   /* Newsletter Section */
   .newsletter-section {
     background: var(
       --primary-gradient,
       linear-gradient(135deg, #ff385c 0%, #e91e63 100%)
     );
-    padding: 4rem 0;
-    margin-bottom: 4rem;
+    padding: 3.5rem 0;
+    margin-bottom: 0;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05),
+      0 10px 30px rgba(0, 0, 0, 0.05);
   }
 
   .newsletter-section::before {
@@ -178,9 +271,9 @@
     bottom: 0;
     background: linear-gradient(
       45deg,
-      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.08) 0%,
       transparent 50%,
-      rgba(255, 255, 255, 0.1) 100%
+      rgba(255, 255, 255, 0.08) 100%
     );
     pointer-events: none;
   }
@@ -189,17 +282,19 @@
     position: relative;
     z-index: 2;
   }
+
   .newsletter-title {
-    color: var(--white, #fff);
-    font-size: 2.5rem;
+    color: #ffffff;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    text-shadow: var(--shadow-sm, 0 2px 10px rgba(0, 0, 0, 0.1));
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
   }
 
   .newsletter-description {
-    color: var(--text-light, rgba(255, 255, 255, 0.9));
-    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
     margin-bottom: 0;
     line-height: 1.6;
   }
@@ -213,90 +308,119 @@
     position: relative;
     max-width: 500px;
     margin-left: auto;
+    margin-top: 1rem;
   }
+
   .newsletter-input {
     width: 100%;
     padding: 1rem 1.5rem;
     border: none;
-    border-radius: var(--border-radius-pill, 50px);
+    border-radius: 50px;
     font-size: 1rem;
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: var(--backdrop-blur, blur(10px));
-    box-shadow: var(--shadow-xl, 0 8px 32px rgba(0, 0, 0, 0.1));
-    transition: var(--transition-all, all 0.3s ease);
-    padding-right: 120px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    padding-right: 130px;
+    height: 56px;
   }
 
   .newsletter-input:focus {
     outline: none;
-    background: var(--white, #fff);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
+    background: #ffffff;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
   }
 
   .newsletter-input::placeholder {
-    color: var(--text-muted, rgba(108, 117, 125, 0.8));
+    color: rgba(107, 114, 128, 0.8);
   }
+
   .newsletter-btn {
     position: absolute;
     right: 4px;
     top: 4px;
     bottom: 4px;
     padding: 0 1.5rem;
-    background: var(--text-dark, #222);
-    color: var(--white, #fff);
+    background: #222222;
+    color: #ffffff;
     border: none;
-    border-radius: var(--border-radius-pill, 50px);
+    border-radius: 50px;
     font-weight: 600;
     cursor: pointer;
-    transition: var(--transition-all, all 0.3s ease);
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    min-width: 110px;
+    min-width: 120px;
     justify-content: center;
+    height: calc(100% - 8px);
   }
 
   .newsletter-btn:hover {
-    background: var(--black, #000);
-    transform: scale(1.05);
-    box-shadow: var(--shadow-lg, 0 4px 12px rgba(0, 0, 0, 0.3));
+    background: #000000;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .newsletter-btn:active {
+    transform: translateY(1px);
   }
 
   .newsletter-btn i {
     font-size: 0.9rem;
   }
 
+  /* Newsletter input validation styles */
+  .newsletter-input-group.focused .newsletter-input {
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+  }
+
+  .newsletter-input.is-valid {
+    border: 1px solid #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  }
+
+  .newsletter-input.is-invalid {
+    border: 1px solid #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  }
   /* Footer Main Content */
+  .footer-content {
+    position: relative;
+    z-index: 2;
+    padding-top: 3.5rem;
+  }
+
   .footer-main {
-    padding-bottom: 3rem;
+    padding-bottom: 2.5rem;
   }
 
   /* Brand Section */
   .footer-brand-section {
     padding-right: 2rem;
   }
+
   .footer-brand {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    color: var(--text-dark, #222);
+    color: var(--footer-text-color);
     text-decoration: none;
     margin-bottom: 1.5rem;
-    transition: var(--transition-all, all 0.3s ease);
+    transition: var(--footer-hover-transition);
   }
 
   .footer-brand:hover {
     color: var(--primary-color, #ff385c);
-    text-shadow: 0 2px 10px var(--primary-light, rgba(255, 56, 92, 0.2));
   }
 
   .brand-icon {
     color: var(--primary-color, #ff385c);
-    font-size: 2rem;
-    transition: var(--transition-all, all 0.3s ease);
+    font-size: 1.8rem;
+    transition: var(--footer-hover-transition);
   }
 
   .footer-brand:hover .brand-icon {
@@ -305,38 +429,63 @@
   .brand-text {
     background: linear-gradient(
       135deg,
-      var(--text-dark, #222) 0%,
+      var(--footer-text-color) 0%,
       var(--primary-color, #ff385c) 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: transparent;
   }
 
   .brand-description {
-    color: var(--text-muted, #6c757d);
-    font-size: 1rem;
+    color: var(--footer-text-muted);
+    font-size: 0.95rem;
     line-height: 1.7;
     margin-bottom: 2rem;
+    max-width: 360px;
   }
 
   /* Social Links */
   .footer-social {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
   }
+
+  .social-heading {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--footer-text-color);
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+  }
+
+  .social-links-wrapper {
+    display: flex;
+    gap: 0.875rem;
+    flex-wrap: wrap;
+  }
+
   .social-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: var(--border-radius-md, 12px);
-    color: var(--white, #fff);
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    color: #ffffff;
     text-decoration: none;
-    transition: var(--transition-all, all 0.3s ease);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+  }
+
+  .social-link i {
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
   }
 
   .social-link::before {
@@ -348,27 +497,48 @@
     bottom: 0;
     background: linear-gradient(
       45deg,
-      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.15) 0%,
       transparent 50%,
       rgba(255, 255, 255, 0.1) 100%
     );
     opacity: 0;
     transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
   }
 
   .social-link:hover::before {
     opacity: 1;
   }
+
   .social-link:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: var(--shadow-md, 0 8px 25px rgba(0, 0, 0, 0.15));
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   }
-  .social-link.facebook {
-    background: #3b5998;
+
+  .social-link:active {
+    transform: scale(0.95);
   }
-  .social-link.twitter {
-    background: #1da1f2;
+
+  .social-link.github {
+    background: #333333;
   }
+
+  .social-link.linkedin {
+    background: #0077b5;
+  }
+
   .social-link.instagram {
     background: linear-gradient(
       45deg,
@@ -379,35 +549,40 @@
       #bc1888 100%
     );
   }
-  .social-link.linkedin {
-    background: #0077b5;
-  }
-  .social-link.github {
-    background: #333;
-  }
+
   .social-link.whatsapp {
     background: #25d366;
   }
+
+  .social-link.facebook {
+    background: #1877f2;
+  }
+
+  .social-link.twitter {
+    background: #1da1f2;
+  }
+
   /* Footer Links Sections */
   .footer-links-section {
     padding-left: 1rem;
   }
-  .footer-links-section h4 {
-    color: var(--text-dark, #222);
-    font-size: 1.2rem;
+
+  .footer-heading {
+    color: var(--footer-text-color);
+    font-size: 1.05rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     position: relative;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
   }
 
-  .footer-links-section h4::after {
+  .footer-heading::after {
     content: "";
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 30px;
-    height: 3px;
+    width: 28px;
+    height: 2px;
     background: var(
       --primary-gradient,
       linear-gradient(90deg, #ff385c, #e91e63)
@@ -415,8 +590,9 @@
     border-radius: 2px;
     transition: width 0.3s ease;
   }
-  .footer-links-section:hover h4::after {
-    width: 50px;
+
+  .footer-links-section:hover .footer-heading::after {
+    width: 42px;
   }
 
   .footer-links {
@@ -428,71 +604,74 @@
   .footer-links li {
     margin-bottom: 0.75rem;
   }
-  .footer-links a {
-    color: var(--text-muted, #6c757d);
+
+  .footer-link {
+    color: var(--footer-text-muted);
     text-decoration: none;
-    font-size: 0.95rem;
-    transition: var(--transition-all, all 0.3s ease);
+    font-size: 0.925rem;
+    transition: var(--footer-hover-transition);
     padding: 0.25rem 0;
-    display: block;
+    display: inline-block;
     position: relative;
   }
 
-  .footer-links a::before {
+  .footer-link::before {
     content: "";
     position: absolute;
-    left: -1rem;
+    left: -0.75rem;
     top: 50%;
     transform: translateY(-50%);
     width: 0;
     height: 2px;
     background: var(--primary-color, #ff385c);
     transition: width 0.3s ease;
+    border-radius: 1px;
   }
 
-  .footer-links a:hover {
+  .footer-link:hover {
     color: var(--primary-color, #ff385c);
-    padding-left: 0.75rem;
+    padding-left: 0.625rem;
   }
 
-  .footer-links a:hover::before {
-    width: 0.5rem;
+  .footer-link:hover::before {
+    width: 0.375rem;
   }
+
+  .footer-link:focus-visible {
+    outline: 2px solid var(--primary-color, #ff385c);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
   /* Footer Bottom */
   .footer-bottom {
-    background: var(--background-light, #f8f9fa);
-    padding: 2rem 0;
-    border-top: 1px solid var(--border-light, rgba(0, 0, 0, 0.05));
-    margin-top: 3rem;
+    background: var(--footer-bg-color);
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
   }
-  .footer-legal {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-    align-items: center;
-  }
-  .footer-legal p {
-    color: var(--text-muted, #6c757d);
+
+  .copyright {
+    color: var(--footer-text-muted);
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
   }
 
   .legal-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.25rem;
     flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
-  .legal-links a {
-    color: var(--text-muted, #6c757d);
+  .legal-link {
+    color: var(--footer-text-muted);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     transition: color 0.3s ease;
     position: relative;
   }
 
-  .legal-links a::after {
+  .legal-link::after {
     content: "";
     position: absolute;
     left: 0;
@@ -503,255 +682,373 @@
     transition: width 0.3s ease;
   }
 
-  .legal-links a:hover {
+  .legal-link:hover {
     color: var(--primary-color, #ff385c);
   }
-  .legal-links a:hover::after {
+
+  .legal-link:hover::after {
     width: 100%;
   }
 
   /* Responsive Design */
-  @media (max-width: 992px) {
+  @media (max-width: 991px) {
     .newsletter-title {
-      font-size: 2rem;
+      font-size: 1.75rem;
     }
 
     .newsletter-description {
-      font-size: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .newsletter-section {
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .newsletter-input-group {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 1.5rem;
     }
 
     .footer-brand-section {
       padding-right: 0;
-      margin-bottom: 3rem;
     }
 
     .footer-links-section {
-      padding-left: 0;
-      margin-bottom: 2rem;
+      padding-left: 0.5rem;
+    }
+
+    .brand-description {
+      max-width: 100%;
     }
   }
 
-  @media (max-width: 768px) {
-    .newsletter-section {
-      padding: 3rem 0;
-      text-align: center;
-    }
-
-    .newsletter-title {
-      font-size: 1.8rem;
-    }
-
-    .newsletter-input-group {
-      margin: 0;
+  @media (max-width: 767px) {
+    .footer-content {
+      padding-top: 2.5rem;
     }
 
     .footer-brand-section {
       text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand {
+      justify-content: center;
+    }
+
+    .brand-description {
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .footer-social {
+      align-items: center;
+    }
+
+    .social-links-wrapper {
       justify-content: center;
     }
 
     .footer-links-section {
       text-align: center;
+      margin-bottom: 2rem;
     }
 
-    .footer-links a::before {
+    .footer-heading::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .footer-link::before {
       display: none;
     }
 
-    .footer-links a:hover {
+    .footer-link:hover {
       padding-left: 0;
     }
 
-    .footer-legal {
+    .footer-bottom {
       text-align: center;
-      align-items: center;
     }
+
     .legal-links {
       justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .copyright {
+      margin-bottom: 0.5rem;
     }
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: 575px) {
+    .newsletter-section {
+      padding: 2.5rem 0;
+    }
+
+    .newsletter-title {
+      font-size: 1.5rem;
+    }
+
     .newsletter-input {
       padding-right: 100px;
       font-size: 0.9rem;
+      height: 50px;
     }
 
     .newsletter-btn {
       min-width: 90px;
       padding: 0 1rem;
     }
+
     .newsletter-btn span {
       display: none;
+    }
+
+    .footer-content {
+      padding-top: 2rem;
+    }
+
+    .footer-main {
+      padding-bottom: 1.5rem;
     }
   }
 </style>
 
 <script>
   /**
-   * Modern Footer Controller
-   * Handles newsletter signup, preference dropdowns, and interactive animations
+   * Enhanced Professional Footer Controller
+   * Handles newsletter signup, social links tracking, and interactive animations
+   * with improved performance and accessibility features
    */
   class FooterController {
     constructor() {
+      // Store references to common DOM elements
+      this.newsletterForm = document.querySelector(".newsletter-form");
+      this.newsletterInput = document.querySelector(".newsletter-input");
+      this.newsletterButton = document.querySelector(".newsletter-btn");
+      this.footerSections = document.querySelectorAll(
+        ".footer-brand-section, .footer-links-section"
+      );
+      this.socialLinks = document.querySelectorAll(".social-link");
+
+      // Initialize the footer functionality
       this.init();
     }
+
     init() {
+      // Setup all interactive features
       this.setupNewsletterForm();
       this.setupSocialLinks();
       this.setupScrollAnimations();
+      this.setupAccessibilityEnhancements();
     }
 
     /**
-     * Newsletter form handling
+     * Newsletter form setup with validation and submission handling
      */
     setupNewsletterForm() {
-      const form = document.querySelector(".newsletter-form");
-      const input = document.querySelector(".newsletter-input");
-      const button = document.querySelector(".newsletter-btn");
+      if (
+        !this.newsletterForm ||
+        !this.newsletterInput ||
+        !this.newsletterButton
+      )
+        return;
 
-      if (!form || !input || !button) return;
-
-      // Form submission
-      form.addEventListener("submit", async (e) => {
+      // Form submission handler
+      this.newsletterForm.addEventListener("submit", async (e) => {
         e.preventDefault();
-        await this.handleNewsletterSubmission(input, button);
+        await this.handleNewsletterSubmission();
+      }); // Subtle focus effects
+      this.newsletterInput.addEventListener("focus", () => {
+        const inputGroup = this.newsletterInput.closest(
+          ".newsletter-input-group"
+        );
+        if (inputGroup) inputGroup.classList.add("focused");
       });
 
-      // Input focus effects
-      input.addEventListener("focus", () => {
-        input.closest(".newsletter-input-group").style.transform =
-          "scale(1.02)";
+      this.newsletterInput.addEventListener("blur", () => {
+        const inputGroup = this.newsletterInput.closest(
+          ".newsletter-input-group"
+        );
+        if (inputGroup) inputGroup.classList.remove("focused");
       });
 
-      input.addEventListener("blur", () => {
-        input.closest(".newsletter-input-group").style.transform = "scale(1)";
-      });
-
-      // Real-time validation
-      input.addEventListener("input", () => {
-        this.validateEmail(input);
+      // Real-time validation as user types
+      this.newsletterInput.addEventListener("input", () => {
+        this.validateEmail();
       });
     }
 
     /**
-     * Handle newsletter form submission
+     * Handle newsletter form submission with proper feedback
      */
-    async handleNewsletterSubmission(input, button) {
-      const email = input.value.trim();
+    async handleNewsletterSubmission() {
+      const email = this.newsletterInput.value.trim();
 
       if (!this.isValidEmail(email)) {
         this.showFormMessage("Please enter a valid email address", "error");
         return;
       }
 
-      // Button loading state
-      const originalText = button.innerHTML;
-      button.innerHTML =
-        '<i class="fas fa-spinner fa-spin"></i> <span>Subscribing...</span>';
-      button.disabled = true;
+      // Save original button state
+      const originalText = this.newsletterButton.innerHTML;
+
+      // Update button to loading state
+      this.setButtonState("loading");
 
       try {
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1500)); // Success state
-        button.innerHTML =
-          '<i class="fas fa-check"></i> <span>Subscribed!</span>';
-        button.style.background = "var(--success-color, #10b981)";
-        input.value = "";
+        // Simulate API call (would be replaced with actual API call)
+        await new Promise((resolve) => setTimeout(resolve, 1200));
 
+        // Success state
+        this.setButtonState("success");
+        this.newsletterInput.value = "";
         this.showFormMessage(
           "Thank you for subscribing to our newsletter!",
           "success"
         );
 
-        // Reset button after 3 seconds
+        // Reset button after delay
         setTimeout(() => {
-          button.innerHTML = originalText;
-          button.style.background = "var(--text-dark, #222)";
-          button.disabled = false;
+          this.resetButtonState(originalText);
         }, 3000);
       } catch (error) {
         // Error state
-        button.innerHTML =
-          '<i class="fas fa-exclamation-triangle"></i> <span>Try Again</span>';
-        button.style.background = "var(--error-color, #ef4444)";
+        this.setButtonState("error");
         this.showFormMessage(
           "Something went wrong. Please try again.",
           "error"
         );
 
-        // Reset button after 3 seconds
+        // Reset button after delay
         setTimeout(() => {
-          button.innerHTML = originalText;
-          button.style.background = "var(--text-dark, #222)";
-          button.disabled = false;
+          this.resetButtonState(originalText);
         }, 3000);
       }
     }
 
     /**
-     * Email validation
+     * Set button state (loading, success, error)
      */
-    validateEmail(input) {
-      const email = input.value.trim();
+    setButtonState(state) {
+      this.newsletterButton.disabled = true;
+
+      switch (state) {
+        case "loading":
+          this.newsletterButton.innerHTML =
+            '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> <span>Subscribing...</span>';
+          this.newsletterButton.setAttribute("aria-busy", "true");
+          break;
+        case "success":
+          this.newsletterButton.innerHTML =
+            '<i class="fas fa-check" aria-hidden="true"></i> <span>Subscribed!</span>';
+          this.newsletterButton.style.background =
+            "var(--success-color, #10b981)";
+          this.newsletterButton.setAttribute("aria-busy", "false");
+          break;
+        case "error":
+          this.newsletterButton.innerHTML =
+            '<i class="fas fa-exclamation-triangle" aria-hidden="true"></i> <span>Try Again</span>';
+          this.newsletterButton.style.background =
+            "var(--error-color, #ef4444)";
+          this.newsletterButton.setAttribute("aria-busy", "false");
+          break;
+      }
+    }
+
+    /**
+     * Reset button to original state
+     */
+    resetButtonState(originalText) {
+      this.newsletterButton.innerHTML = originalText;
+      this.newsletterButton.style.background = "";
+      this.newsletterButton.disabled = false;
+      this.newsletterButton.setAttribute("aria-busy", "false");
+    }
+
+    /**
+     * Validate email with visual feedback
+     */
+    validateEmail() {
+      const email = this.newsletterInput.value.trim();
       const isValid = this.isValidEmail(email);
-      if (email && !isValid) {
-        input.style.borderColor = "var(--error-color, #ef4444)";
-        input.style.boxShadow =
-          "0 0 0 0.25rem var(--error-light, rgba(239, 68, 68, 0.15))";
+
+      // Only apply validation styles if the input isn't empty
+      if (email) {
+        if (isValid) {
+          this.newsletterInput.classList.remove("is-invalid");
+          this.newsletterInput.classList.add("is-valid");
+          this.newsletterInput.setAttribute("aria-invalid", "false");
+        } else {
+          this.newsletterInput.classList.remove("is-valid");
+          this.newsletterInput.classList.add("is-invalid");
+          this.newsletterInput.setAttribute("aria-invalid", "true");
+        }
       } else {
-        input.style.borderColor = "var(--border-color, #ced4da)";
-        input.style.boxShadow =
-          "var(--shadow-xs, 0 2px 8px rgba(0, 0, 0, 0.05))";
+        // Reset validation state when input is empty
+        this.newsletterInput.classList.remove("is-valid", "is-invalid");
+        this.newsletterInput.removeAttribute("aria-invalid");
       }
 
       return isValid;
     }
 
+    /**
+     * Email validation using regex pattern
+     */
     isValidEmail(email) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
     /**
-     * Show form messages
+     * Show form feedback messages with clean animations
      */
     showFormMessage(message, type) {
-      // Remove existing messages
+      // Remove existing messages first
       const existingMessage = document.querySelector(".newsletter-message");
       if (existingMessage) {
         existingMessage.remove();
       }
 
-      // Create new message
+      // Create message element
       const messageEl = document.createElement("div");
       messageEl.className = `newsletter-message ${type}`;
       messageEl.textContent = message;
-      messageEl.style.cssText = `
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      margin-top: 0.5rem;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-align: center;
-      z-index: 10;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: all 0.3s ease;
-      ${
-        type === "success"
-          ? "background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0;"
-          : "background: #fee2e2; color: #991b1b; border: 1px solid #fecaca;"
-      }
-    `;
 
-      document.querySelector(".newsletter-form").appendChild(messageEl);
+      // Set appropriate role for screen readers
+      messageEl.setAttribute("role", type === "error" ? "alert" : "status");
+
+      // Style the message
+      const backgroundColor = type === "success" ? "#d1fae5" : "#fee2e2";
+      const textColor = type === "success" ? "#065f46" : "#991b1b";
+      const borderColor = type === "success" ? "#a7f3d0" : "#fecaca";
+
+      messageEl.style.cssText = `
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin-top: 0.5rem;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-align: center;
+        z-index: 10;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        background: ${backgroundColor};
+        color: ${textColor};
+        border: 1px solid ${borderColor};
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      `;
+
+      // Add to DOM
+      this.newsletterForm.appendChild(messageEl);
 
       // Animate in
       requestAnimationFrame(() => {
@@ -759,7 +1056,7 @@
         messageEl.style.transform = "translateY(0)";
       });
 
-      // Remove after 5 seconds
+      // Auto-remove after delay
       setTimeout(() => {
         messageEl.style.opacity = "0";
         messageEl.style.transform = "translateY(-10px)";
@@ -768,117 +1065,124 @@
     }
 
     /**
-     * Social links with tracking
+     * Social links setup with analytics tracking
      */
     setupSocialLinks() {
-      const socialLinks = document.querySelectorAll(".social-link");
+      if (!this.socialLinks.length) return;
 
-      socialLinks.forEach((link) => {
+      this.socialLinks.forEach((link) => {
+        // Track clicks for analytics without preventing navigation
         link.addEventListener("click", (e) => {
-          e.preventDefault();
           const platform = this.getSocialPlatform(link);
           this.trackSocialClick(platform);
+        });
 
-          // Add click animation
-          link.style.transform = "scale(0.95)";
-          setTimeout(() => {
-            link.style.transform = "translateY(-3px) scale(1.05)";
-          }, 150);
+        // Add keyboard navigation enhancement
+        link.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            link.click();
+          }
         });
       });
     }
 
+    /**
+     * Identify social platform from link classes
+     */
     getSocialPlatform(link) {
-      if (link.classList.contains("facebook")) return "facebook";
-      if (link.classList.contains("twitter")) return "twitter";
-      if (link.classList.contains("instagram")) return "instagram";
-      if (link.classList.contains("linkedin")) return "linkedin";
+      const platforms = [
+        "facebook",
+        "twitter",
+        "instagram",
+        "linkedin",
+        "github",
+        "whatsapp",
+      ];
+      for (const platform of platforms) {
+        if (link.classList.contains(platform)) return platform;
+      }
       return "unknown";
     }
 
+    /**
+     * Track social media clicks for analytics
+     */
     trackSocialClick(platform) {
       console.log(`Social media click tracked: ${platform}`);
-      // Here you would typically send analytics data
+      // In a real implementation, this would send data to an analytics service
+
+      // Example:
+      // if (window.gtag) {
+      //   gtag('event', 'click', {
+      //     'event_category': 'Social',
+      //     'event_label': platform
+      //   });
+      // }
     }
 
     /**
-     * Scroll animations for footer elements
+     * Setup scroll animations with IntersectionObserver for performance
      */
     setupScrollAnimations() {
+      // Skip animation for users who prefer reduced motion
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        this.footerSections.forEach((section) => {
+          section.style.opacity = "1";
+          section.style.transform = "none";
+        });
+        return;
+      }
+
+      // Create the intersection observer
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               this.animateFooterSection(entry.target);
+              // Unobserve after animation to improve performance
+              observer.unobserve(entry.target);
             }
           });
         },
         {
-          threshold: 0.1,
-          rootMargin: "50px",
+          threshold: 0.15,
+          rootMargin: "30px",
         }
       );
 
-      // Observe footer sections
-      const sections = document.querySelectorAll(
-        ".footer-brand-section, .footer-links-section"
-      );
-      sections.forEach((section) => {
+      // Set initial state and observe sections
+      this.footerSections.forEach((section) => {
         section.style.opacity = "0";
-        section.style.transform = "translateY(30px)";
-        section.style.transition = "all 0.6s ease";
+        section.style.transform = "translateY(20px)";
+        section.style.transition = "opacity 0.5s ease, transform 0.5s ease";
         observer.observe(section);
       });
     }
 
+    /**
+     * Animate footer section when it comes into view
+     */
     animateFooterSection(section) {
       section.style.opacity = "1";
       section.style.transform = "translateY(0)";
     }
 
     /**
-     * Ripple effect for buttons
+     * Add accessibility enhancements
      */
-    createRipple(event, element) {
-      const ripple = document.createElement("span");
-      const rect = element.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      const x = event.clientX - rect.left - size / 2;
-      const y = event.clientY - rect.top - size / 2;
-
-      ripple.style.cssText = `
-      position: absolute;
-      width: ${size}px;
-      height: ${size}px;
-      left: ${x}px;
-      top: ${y}px;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      transform: scale(0);
-      animation: ripple 0.6s ease-out;
-      pointer-events: none;
-    `;
-
-      // Add ripple keyframes if not already added
-      if (!document.querySelector("#ripple-styles")) {
-        const style = document.createElement("style");
-        style.id = "ripple-styles";
-        style.textContent = `
-        @keyframes ripple {
-          to {
-            transform: scale(2);
-            opacity: 0;
+    setupAccessibilityEnhancements() {
+      // Add aria-labels to interactive elements where needed
+      const interactiveElements = document.querySelectorAll(
+        ".footer-link:not([aria-label]), .legal-link:not([aria-label])"
+      );
+      interactiveElements.forEach((el) => {
+        if (el.textContent.trim()) {
+          // Only set if there's no existing aria-label
+          if (!el.getAttribute("aria-label")) {
+            el.setAttribute("aria-label", el.textContent.trim());
           }
         }
-      `;
-        document.head.appendChild(style);
-      }
-
-      element.style.position = "relative";
-      element.style.overflow = "hidden";
-      element.appendChild(ripple);
-
-      setTimeout(() => ripple.remove(), 600);
+      });
     }
   }
 
