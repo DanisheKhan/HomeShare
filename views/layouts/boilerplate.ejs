@@ -3,16 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>
-      <%= title ? `${title} | HomeShare` : 'HomeShare - Find Your Perfect
+      <%= title ? (title + ' | HomeShare') : 'HomeShare - Find Your Perfect
       Accommodation' %>
     </title>
 
     <!-- Primary Meta Tags -->
     <meta
       name="title"
-      content="<%= title ? `${title} | HomeShare` : 'HomeShare - Find Your Perfect Accommodation' %>"
+      content="<%= title ? (title + ' | HomeShare') : 'HomeShare - Find Your Perfect Accommodation' %>"
     />
     <meta
       name="description"
@@ -28,20 +27,19 @@
     <meta property="og:url" content="https://yourdomain.com/" />
     <meta
       property="og:title"
-      content="<%= title ? `${title} | HomeShare` : 'HomeShare - Find Your Perfect Accommodation' %>"
+      content="<%= title ? (title + ' | HomeShare') : 'HomeShare - Find Your Perfect Accommodation' %>"
     />
     <meta
       property="og:description"
       content="<%= description || 'Discover and share accommodations worldwide. Find rooms, apartments, and homes for your next stay.' %>"
     />
     <meta property="og:image" content="/Images/webLogo.png" />
-
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://yourdomain.com/" />
     <meta
       property="twitter:title"
-      content="<%= title ? `${title} | HomeShare` : 'HomeShare - Find Your Perfect Accommodation' %>"
+      content="<%= title ? (title + ' | HomeShare') : 'HomeShare - Find Your Perfect Accommodation' %>"
     />
     <meta
       property="twitter:description"
