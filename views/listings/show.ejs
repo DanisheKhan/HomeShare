@@ -7,33 +7,62 @@
 <style>
   /* Listing Detail Page Styles */
   .listing-detail-container {
-    margin-top: 1rem;
-    margin-bottom: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    position: relative;
+  }
+
+  /* Container Styling */
+  .listing-container {
+    background: linear-gradient(
+      to bottom,
+      rgba(248, 249, 250, 0.5),
+      rgba(255, 255, 255, 0)
+    );
+    padding: 2rem 0;
+    border-radius: var(--radius-lg);
   }
 
   /* Breadcrumb */
   .listing-breadcrumb {
     margin-bottom: 1.5rem;
+    padding: 0.5rem 0.25rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: var(--backdrop-blur);
+    border-radius: var(--radius-md);
+    display: inline-block;
+  }
+
+  .breadcrumb {
+    margin-bottom: 0;
+    padding: 0.25rem 0.5rem;
   }
 
   .breadcrumb-item a {
     color: var(--secondary-color);
     text-decoration: none;
     transition: var(--transition);
+    font-weight: 500;
+    position: relative;
   }
 
   .breadcrumb-item a:hover {
     color: var(--primary-color);
   }
 
+ 
+
+  .breadcrumb-item a:hover::after {
+    width: 100%;
+  }
+
   .breadcrumb-item.active {
     color: var(--text-muted);
   }
-
   /* Gallery Section */
   .gallery-container {
     position: relative;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
   }
 
   .main-image {
@@ -41,17 +70,44 @@
     border-radius: var(--radius-lg);
     overflow: hidden;
     height: 450px;
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .main-image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 70%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+    pointer-events: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .main-image:hover::after {
+    opacity: 0.5;
+  }
+
+  .main-image:hover {
+    box-shadow: var(--shadow-lg);
   }
 
   .main-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
   }
 
   .main-image:hover img {
-    transform: scale(1.02);
+    transform: scale(1.05);
   }
 
   .gallery-action-btn {
@@ -60,24 +116,27 @@
     bottom: 20px;
     background-color: white;
     border: 1px solid var(--border-color);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-xl);
     font-weight: 500;
-    transition: var(--transition);
-    box-shadow: var(--shadow-sm);
+    transition: var(--transition-all);
+    box-shadow: var(--shadow-md);
+    z-index: 1;
   }
 
   .gallery-action-btn:hover {
     background-color: var(--light-color);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
   }
-
   /* Listing Header */
   .listing-title {
-    font-size: 1.75rem;
-    font-weight: 700;
+    font-size: 1.85rem;
+    font-weight: 800;
     margin-bottom: 0.75rem;
     color: var(--secondary-color);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
   }
 
   .listing-subheader {
@@ -85,13 +144,15 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 1rem;
   }
 
   .listing-meta {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.25rem;
+    padding: 0.35rem 0;
   }
 
   .rating i {
@@ -99,17 +160,34 @@
   }
 
   .location-badge {
-    color: var(--text-muted);
+    color: var(--text-secondary);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    padding: 0.25rem 0;
+  }
+
+  .location-badge i {
+    color: var(--primary-color);
   }
 
   .listing-actions {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
 
   .action-btn {
-    border-radius: 20px;
+    border-radius: var(--radius-xl);
     font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition-all);
+  }
+
+  .action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
   }
 
   /* Host Section */
@@ -117,112 +195,214 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: var(--background-light);
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-xs);
+    border: 1px solid var(--border-light);
   }
 
   .host-label {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     margin-bottom: 0.25rem;
+    line-height: 1.4;
+    color: var(--text-dark);
+  }
+  .host-name {
+    font-weight: 700;
+    color: var(--secondary-color);
+    position: relative;
+    display: inline-block;
+    transition: var(--transition);
   }
 
-  .host-name {
-    font-weight: 600;
+  .host-name::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-gradient);
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  .host-name:hover {
+    color: var(--primary-color);
+  }
+
+  .host-name:hover::after {
+    opacity: 1;
+    transform: scaleX(1.05);
   }
 
   .host-details {
     color: var(--text-muted);
     font-size: 0.95rem;
-    margin: 0;
+    margin: 0.5rem 0 0;
   }
 
   .host-avatar {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background-color: #e9ecef;
+    background-color: var(--light-color);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--secondary-color);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid white;
+    margin-right: 1rem;
   }
-
   /* Divider */
   .divider {
-    margin: 1.5rem 0;
-    border-color: var(--border-color);
-    opacity: 0.5;
+    margin: 2rem 0;
+    border-color: var(--border-light);
+    opacity: 0.7;
+    position: relative;
   }
 
   /* Highlights */
   .listing-highlights {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem 1.5rem;
+    margin: 2.5rem 0;
+    padding: 0.5rem;
   }
 
   .highlight-item {
     display: flex;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 1.25rem;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+    border: 1px solid transparent;
+  }
+
+  .highlight-item:hover {
+    background: var(--background-light);
+    border-color: var(--border-light);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
   }
 
   .highlight-icon {
-    color: var(--secondary-color);
-    font-size: 1.25rem;
-    width: 24px;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .highlight-info h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
   }
 
   .highlight-info p {
     margin: 0;
-    color: var(--text-muted);
-    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 
   /* Description */
-  .listing-description h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+  .listing-description {
+    margin: 2rem 0;
   }
 
+  .listing-description h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    position: relative;
+    display: inline-block;
+    color: var(--text-dark);
+  }
+
+   
+
   .description-text {
-    line-height: 1.6;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 90%;
   }
 
   .read-more-btn {
     text-decoration: none;
     font-weight: 500;
   }
-
   /* Owner Actions */
   .owner-actions {
-    background-color: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: var(--radius-md);
-    margin: 1.5rem 0;
+    background: linear-gradient(
+      to right,
+      rgba(255, 56, 92, 0.03),
+      rgba(255, 255, 255, 0.05)
+    );
+    padding: 1.75rem;
+    border-radius: var(--radius-lg);
+    margin: 2rem 0;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
   }
 
   .owner-actions h3 {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
+    font-size: 1.35rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
+  }
+
+  .owner-actions h3::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 35px;
+    height: 3px;
+    background: var(--primary-gradient);
+    border-radius: 3px;
   }
 
   .btn-group {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
   }
+
+  .btn-group .btn {
+    padding: 0.7rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    transition: var(--transition-all);
+  }
+
+  .btn-group .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
   /* Booking Information (Inline) */
   .booking-info-inline {
-    background-color: #f8f9fa;
+    background-color: var(--background-light);
     border-radius: var(--radius-lg);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    padding: 1.75rem;
+    margin-bottom: 1.75rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-light);
   }
 
   .price-info {
@@ -340,82 +520,187 @@
     margin-top: 0.75rem;
     border-top: 1px solid var(--border-color);
   }
-
   /* Map Section */
   .property-map {
     height: 400px;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     margin-bottom: 1.5rem;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-md);
+    border: 3px solid white;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .property-map:hover {
+    transform: scale(1.01);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .listing-map {
+    margin: 2.5rem 0;
   }
 
   .listing-map h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
   }
 
+ 
+
   .location-info {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    background: var(--background-light);
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-md);
+    display: inline-block;
+    box-shadow: var(--shadow-xs);
   }
 
   .location-info p {
-    color: var(--text-muted);
+    color: var(--text-secondary);
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .location-info i {
+    color: var(--primary-color);
   }
 
   /* Reviews Section */
   .listing-reviews {
-    margin-top: 2rem;
+    margin-top: 3rem;
+    position: relative;
+  }
+
+  .listing-reviews::before {
+    content: "";
+    position: absolute;
+    top: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 1px;
+    background: var(--border-light);
   }
 
   .reviews-header h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.75rem;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
   }
 
+  .reviews-header h2::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--primary-gradient);
+    border-radius: 3px;
+  }
   .rating-bars {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 1.25rem 2rem;
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: var(--background-light);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
   }
 
   .rating-bar-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
 
   .rating-label {
-    width: 100px;
-    color: var(--text-muted);
+    width: 110px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
   }
 
   .rating-value {
-    font-weight: 500;
+    font-weight: 600;
+    color: var(--text-dark);
+    min-width: 24px;
+    text-align: center;
   }
 
   .progress {
     flex-grow: 1;
-    height: 4px;
-    background-color: #e9ecef;
+    height: 6px;
+    background-color: rgba(222, 226, 230, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
   }
 
   .progress-bar {
-    background-color: var(--secondary-color);
+    background: var(--primary-gradient);
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(255, 56, 92, 0.3);
   }
 
   .reviews-list {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .review-item {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    background: var(--background-light);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-xs);
+    transition: var(--transition);
+    animation: fadeIn 0.8s ease-out;
+    animation-fill-mode: backwards;
   }
 
-  .review-item {
-    margin-bottom: 2rem;
+  .review-item:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .review-item:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .review-item:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .review-item:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  .review-item:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+
+  .review-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(255, 56, 92, 0.1);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .review-header {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 
   .reviewer-info {
@@ -425,23 +710,40 @@
   }
 
   .reviewer-avatar {
-    color: var(--text-muted);
+    color: var(--text-secondary);
+    background: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: var(--shadow-xs);
   }
 
   .reviewer-details h4 {
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1.1rem;
+    font-weight: 600;
     margin-bottom: 0.25rem;
+    color: var(--text-dark);
   }
 
   .review-date {
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: inline-block;
+    background: rgba(222, 226, 230, 0.3);
+    padding: 0.2rem 0.75rem;
+    border-radius: var(--radius-xl);
   }
 
   .review-text {
-    margin-top: 0.5rem;
-    color: var(--secondary-color);
+    margin-top: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0.5rem 0;
   }
 
   .show-all-reviews {
@@ -449,47 +751,174 @@
     width: 100%;
     margin-bottom: 2rem;
   }
-
   /* Add Review Section */
   .add-review {
-    background-color: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: var(--radius-md);
-    margin: 2rem 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95),
+      var(--background-light)
+    );
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    margin: 2.5rem 0;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-light);
   }
 
   .add-review h3 {
-    font-size: 1.25rem;
-    margin-bottom: 1.25rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
+  }
+
+  .add-review h3::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--primary-gradient);
+    border-radius: 3px;
+  }
+
+  .review-form {
+    margin-top: 1rem;
+  }
+
+  .review-form label {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+  }
+
+  .review-form .form-control {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: all 0.3s ease;
   }
 
   .review-form .form-control:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(247, 87, 92, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(255, 56, 92, 0.2);
+    outline: none;
+  }
+
+  .review-form button[type="submit"] {
+    margin-top: 0.5rem;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    background: var(--primary-gradient);
+    border: none;
+    transition: var(--transition-all);
+  }
+
+  .review-form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 56, 92, 0.3);
   }
 
   .login-to-review {
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border-radius: var(--radius-md);
-    text-align: center;
-    margin-top: 2rem;
-  }
-  /* Things To Know Section (Inline) */
-  .things-to-know-inline {
-    background-color: #f8f9fa;
+    padding: 2.5rem;
+    background-color: var(--background-light);
     border-radius: var(--radius-lg);
-    padding: 1.5rem;
+    text-align: center;
+    margin: 2.5rem 0;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .login-prompt-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.6rem;
+    box-shadow: 0 5px 15px rgba(255, 56, 92, 0.3);
+  }
+
+  .login-to-review h4 {
+    font-weight: 700;
+    color: var(--text-dark);
+    font-size: 1.4rem;
+  }
+
+  .login-to-review p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .login-to-review a {
+    font-weight: 700;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    transition: var(--transition);
+  }
+
+  .login-to-review a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-gradient);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+
+  .login-to-review a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  } /* Things To Know Section (Inline) */
+  .things-to-know-inline {
+    background-color: var(--background-light);
+    background-image: radial-gradient(var(--border-light) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: -10px -10px;
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
   }
 
   .things-to-know-inline h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.75rem;
+    color: var(--text-dark);
+    position: relative;
+    display: inline-block;
   }
 
+  
+
   .info-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+  }
+
+  .info-group:hover {
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: var(--shadow-xs);
   }
 
   .info-group:last-child {
@@ -497,22 +926,122 @@
   }
 
   .info-group h4 {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.15rem;
+    font-weight: 700;
     margin-bottom: 1rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-group h4::before {
+    content: "•";
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    line-height: 0.5;
   }
 
   .info-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 0 0.5rem;
   }
 
   .info-list li {
-    margin-bottom: 0.5rem;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-  } /* Enhanced Media Queries */
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.975rem;
+    position: relative;
+    padding-left: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .info-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    opacity: 0.7;
+  }
+
+  /* Enhanced Reviews Summary and Overall Rating Styles */
+  .reviews-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: var(--background-light);
+    border-radius: var(--radius-lg);
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-light);
+  }
+
+  .overall-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .overall-rating-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+
+  .overall-rating i {
+    color: #ffb700;
+    font-size: 1.25rem;
+  }
+
+  .reviews-count {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .rating-display {
+    margin-bottom: 0.75rem;
+  }
+
+  .review-text-container {
+    background-color: white;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    margin-top: 0.5rem;
+    position: relative;
+  }
+
+  .review-text-container::before {
+    content: '"';
+    position: absolute;
+    top: -5px;
+    left: 0.5rem;
+    font-size: 2rem;
+    color: var(--primary-color);
+    opacity: 0.2;
+    font-family: Georgia, serif;
+  }
+
+  .review-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+
+  .review-actions .btn {
+    padding: 0.4rem 1rem;
+    font-weight: 500;
+    border-radius: var(--radius-md);
+    transition: var(--transition-all);
+  }
+
+  .review-actions .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Enhanced Media Queries */
   @media screen and (min-width: 1400px) {
     .main-image {
       height: 550px;
@@ -555,7 +1084,6 @@
       font-size: 1.65rem;
     }
   }
-
   @media screen and (max-width: 768px) {
     .main-image {
       height: 300px;
@@ -575,6 +1103,20 @@
       font-size: 1.6rem;
     }
 
+    .listing-host {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .host-avatar {
+      margin: 0 auto;
+    }
+
+    .highlight-item {
+      padding: 0.75rem;
+    }
+
     .amenities-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 0.75rem;
@@ -586,6 +1128,14 @@
 
     .info-group h4 {
       font-size: 1.1rem;
+    }
+
+    .review-item {
+      padding: 1.25rem;
+    }
+
+    .things-to-know-inline {
+      padding: 1.5rem;
     }
   }
 
@@ -669,6 +1219,17 @@
       height: 25px;
     }
   }
+
+  .review-intro {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .rating-selection {
+    margin-top: 0.5rem;
+  }
 </style>
 
 <div class="listing-detail-container">
@@ -677,9 +1238,13 @@
     <div class="container">
       <nav aria-label="breadcrumb" class="listing-breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/listings">Listings</a></li>
           <li class="breadcrumb-item">
-            <a href="#"><%= listing.country %></a>
+            <a href="/listings"><i class="fas fa-home me-1"></i> Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="/listings?country=<%= listing.country %>"
+              ><%= listing.country %></a
+            >
           </li>
           <li class="breadcrumb-item active" aria-current="page">
             <%= listing.location %>
@@ -694,10 +1259,9 @@
       </div>
     </div>
   </section>
-
   <!-- Listing Information Section -->
   <section class="listing-info">
-    <div class="container">
+    <div class="container listing-container">
       <div class="row">
         <!-- Main Content - Full Width -->
         <div class="col-12">
@@ -705,10 +1269,6 @@
             <h1 class="listing-title"><%= listing.title %></h1>
             <div class="listing-subheader">
               <div class="listing-meta">
-                <span class="rating">
-                  <i class="fa-solid fa-star"></i> 4.85
-                </span>
-                <span class="reviews-count">(42 reviews)</span>
                 <span class="location-badge">
                   <i class="fa-solid fa-location-dot me-1"></i> <%=
                   listing.location %>, <%= listing.country %>
@@ -837,7 +1397,7 @@
   </section>
   <!-- Reviews and Map Section -->
   <section class="listing-details">
-    <div class="container">
+    <div class="container listing-container">
       <div class="row">
         <div class="col-12">
           <!-- Map Section -->
@@ -853,10 +1413,22 @@
           </div>
 
           <hr class="divider" />
-
           <!-- Reviews Section -->
           <div class="listing-reviews">
+            <h2 class="mb-4">Guest Reviews</h2>
             <% if(listing.reviews.length > 0) { %>
+            <div class="reviews-summary mb-4">
+              <div class="d-flex align-items-center gap-3">
+                <div class="overall-rating">
+                  <span class="overall-rating-value">4.9</span>
+                  <i class="fas fa-star text-warning"></i>
+                </div>
+                <span class="reviews-count"
+                  >(<%= listing.reviews.length %> reviews)</span
+                >
+              </div>
+            </div>
+
             <div class="reviews-list">
               <% for(let review of listing.reviews) { %>
               <div class="review-item">
@@ -867,25 +1439,33 @@
                     </div>
                     <div class="reviewer-details">
                       <h4><%= review.author.username %></h4>
-                      <span class="review-date">June 2025</span>
+                      <span class="review-date"
+                        ><i class="far fa-calendar-alt me-2"></i>June 2025</span
+                      >
                     </div>
                   </div>
                 </div>
                 <div class="review-content">
-                  <p
-                    class="starability-result"
-                    data-rating="<%= review.rating %>"
-                  ></p>
-                  <p class="review-text"><%= review.comment %></p>
+                  <div class="rating-display mb-2">
+                    <p
+                      class="starability-result m-0"
+                      data-rating="<%= review.rating %>"
+                    ></p>
+                  </div>
+                  <div class="review-text-container">
+                    <p class="review-text"><%= review.comment %></p>
+                  </div>
                   <% if(currUser && review.author._id.equals(currUser._id)) { %>
-                  <form
-                    method="post"
-                    action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
-                  >
-                    <button class="btn btn-sm btn-outline-danger">
-                      <i class="fa-solid fa-trash-alt me-1"></i> Delete
-                    </button>
-                  </form>
+                  <div class="review-actions mt-3">
+                    <form
+                      method="post"
+                      action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                    >
+                      <button class="btn btn-sm btn-outline-danger">
+                        <i class="fa-solid fa-trash-alt me-1"></i> Delete Review
+                      </button>
+                    </form>
+                  </div>
                   <% } %>
                 </div>
               </div>
@@ -894,72 +1474,76 @@
 
             <% } %> <% if(currUser) { %>
             <div class="add-review">
-              <h3>Leave a review</h3>
+              <h3>Share Your Experience</h3>
+              <p class="review-intro">
+                Tell others what you loved about this place and help future
+                travelers make the right choice.
+              </p>
               <form
                 action="/listings/<%= listing.id %>/reviews"
                 method="post"
                 novalidate
                 class="needs-validation review-form"
               >
-                <div class="mb-3">
-                  <label for="rating" class="form-label">Rating</label>
-                  <fieldset class="starability-slot">
-                    <input
-                      type="radio"
-                      id="no-rate"
-                      class="input-no-rate"
-                      name="review[rating]"
-                      value="1"
-                      checked
-                      aria-label="No rating."
-                    />
-                    <input
-                      type="radio"
-                      id="first-rate1"
-                      name="review[rating]"
-                      value="1"
-                    />
-                    <label for="first-rate1" title="Terrible">1 star</label>
-                    <input
-                      type="radio"
-                      id="first-rate2"
-                      name="review[rating]"
-                      value="2"
-                    />
-                    <label for="first-rate2" title="Not good">2 stars</label>
-                    <input
-                      type="radio"
-                      id="first-rate3"
-                      name="review[rating]"
-                      value="3"
-                    />
-                    <label for="first-rate3" title="Average">3 stars</label>
-                    <input
-                      type="radio"
-                      id="first-rate4"
-                      name="review[rating]"
-                      value="4"
-                    />
-                    <label for="first-rate4" title="Very good">4 stars</label>
-                    <input
-                      type="radio"
-                      id="first-rate5"
-                      name="review[rating]"
-                      value="5"
-                    />
-                    <label for="first-rate5" title="Amazing">5 stars</label>
-                  </fieldset>
+                <div class="mb-4">
+                  <label for="rating" class="form-label">Your Rating</label>
+                  <div class="rating-selection">
+                    <fieldset class="starability-slot">
+                      <input
+                        type="radio"
+                        id="no-rate"
+                        class="input-no-rate"
+                        name="review[rating]"
+                        value="1"
+                        checked
+                        aria-label="No rating."
+                      />
+                      <input
+                        type="radio"
+                        id="first-rate1"
+                        name="review[rating]"
+                        value="1"
+                      />
+                      <label for="first-rate1" title="Terrible">1 star</label>
+                      <input
+                        type="radio"
+                        id="first-rate2"
+                        name="review[rating]"
+                        value="2"
+                      />
+                      <label for="first-rate2" title="Not good">2 stars</label>
+                      <input
+                        type="radio"
+                        id="first-rate3"
+                        name="review[rating]"
+                        value="3"
+                      />
+                      <label for="first-rate3" title="Average">3 stars</label>
+                      <input
+                        type="radio"
+                        id="first-rate4"
+                        name="review[rating]"
+                        value="4"
+                      />
+                      <label for="first-rate4" title="Very good">4 stars</label>
+                      <input
+                        type="radio"
+                        id="first-rate5"
+                        name="review[rating]"
+                        value="5"
+                      />
+                      <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
+                  </div>
                 </div>
-                <div class="mb-3">
-                  <label for="comment" class="form-label"
-                    >Your experience</label
-                  >
+                <div class="mb-4">
+                  <label for="comment" class="form-label">Your Comments</label>
                   <textarea
                     name="review[comment]"
                     id="comment"
                     class="form-control"
                     rows="4"
-                    placeholder="Tell others about your stay..."
+                    placeholder="Share what you loved, any suggestions for improvement, and your overall experience..."
                     required
                   ></textarea>
                   <div class="invalid-feedback">
@@ -967,16 +1551,21 @@
                   </div>
                 </div>
                 <button type="submit" class="btn btn-primary">
-                  Submit review
+                  <i class="far fa-paper-plane me-2"></i>Submit Review
                 </button>
               </form>
             </div>
             <% } else { %>
             <div class="login-to-review">
+              <div class="login-prompt-icon mb-3">
+                <i class="fas fa-comment-alt"></i>
+              </div>
+              <h4 class="mb-3">Share Your Experience</h4>
               <p>
-                Want to leave a review?
+                Want to leave a review for this property?
                 <a href="/login" class="text-primary">Log in</a> or
-                <a href="/signup" class="text-primary">sign up</a>
+                <a href="/signup" class="text-primary">sign up</a> to
+                contribute.
               </p>
             </div>
             <% } %>
