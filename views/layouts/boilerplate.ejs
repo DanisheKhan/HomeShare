@@ -66,6 +66,7 @@
     <link rel="stylesheet" href="/css/rating.css" />
     <link rel="stylesheet" href="/css/card-components.css" />
     <link rel="stylesheet" href="/css/responsive-cards.css" />
+    <link rel="stylesheet" href="/css/loading.css" /> 
     <link
       href="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.css"
       rel="stylesheet"
@@ -77,6 +78,9 @@
   </head>
 
   <body>
+    <div id="loading-overlay" style="display: none;">
+      <div class="loading-spinner"></div>
+    </div>
     <%- include("../includes/navbar.ejs") %>
     <div class="container">
       <%- include("../includes/flash.ejs") %> <%- body %>
@@ -91,5 +95,6 @@
     <script src="/js/script.js"></script>
     <script src="/js/search.js"></script>
     <script src="/js/card-enhancements.js"></script>
+    <script src="/js/loading.js"></script>
   </body>
 </html>
